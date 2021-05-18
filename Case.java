@@ -26,11 +26,16 @@ public class Case {
     public boolean GetIsCaseWhite(){
         return this.iscasewhite;
     }
-    public MatToCoo(){
-
+    public String TabIndexToCoo(int i){
+        String lettre = Character.toString((char)((int)'a' + i % 8));
+        int chiffre = 8 - (i /8);
+        return (lettre + chiffre);
     };
 
-    public CooToMat(){
-
+    public int CooToTabIndex(String coup){
+        int colonne = (int)coup.toLowerCase().charAt(0) -  97 ;
+        int ligne = Character.getNumericValue(coup.charAt(1));
+        int res = 8 * (8 - ligne) + colonne;
+        return res;
     };
 }
