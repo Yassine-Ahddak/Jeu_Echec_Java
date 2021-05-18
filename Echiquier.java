@@ -297,6 +297,43 @@ public class Echiquier{
         }
         return res;
     }
+
+    public ArrayList<Case> CalculerCoupPion(String casedep){
+        ArrayList<Case> res = new ArrayList<Case>();
+        int colonne = (int)casedep.toLowerCase().charAt(0) -  97 ;
+        int ligne = Character.getNumericValue(casedep.charAt(1));
+        int indexcasedep = 8 * (8 - ligne) + colonne;
+        boolean estblanc = this.echiquier[indexcasedep].GetIsCaseWhite();
+        if(estblanc){
+            if(this.echiquier[indexcasedep - 7].GetIsCaseWhite() != estblanc){
+                res.add(this.echiquier[indexcasedep - 7]);
+            }
+            if(this.echiquier[indexcasedep - 9].GetIsCaseWhite() != estblanc){
+                res.add(this.echiquier[indexcasedep - 9]);
+            }
+            if(this.echiquier[indexcasedep - 8].GetValCase() == 0){
+                res.add(this.echiquier[indexcasedep - 8]);
+            }
+            if(ligne == 7){
+                res.add(this.echiquier[indexcasedep - 16]);
+            }
+        }
+        else{
+            if(this.echiquier[indexcasedep + 7].GetIsCaseWhite() != estblanc){
+                res.add(this.echiquier[indexcasedep + 7]);
+            }
+            if(this.echiquier[indexcasedep + 9].GetIsCaseWhite() != estblanc){
+                res.add(this.echiquier[indexcasedep + 9]);
+            }
+            if(this.echiquier[indexcasedep + 8].GetValCase() == 0){
+                res.add(this.echiquier[indexcasedep + 8]);
+            }
+            if(ligne == 2){
+                res.add(this.echiquier[indexcasedep + 16]);
+            }
+        }
+        return res;
+    }
     
     public void Update(){
         // todo
