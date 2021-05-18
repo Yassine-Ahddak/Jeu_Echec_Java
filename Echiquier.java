@@ -335,6 +335,24 @@ public class Echiquier{
         return res;
     }
     
+    public boolean EstCoupValide(String coup){
+        // On verifiera si le coup entré correspont au bon camp dans la classe Game (boucle principale)
+        int colonne = (int)coup.toLowerCase().charAt(0) -  97 ;
+        int ligne = Character.getNumericValue(coup.charAt(1));
+        int indexcasedep = 8 * (8 - ligne) + colonne;
+        int colonne2 = (int)coup.toLowerCase().charAt(2) -  97 ;
+        int ligne2 = Character.getNumericValue(coup.charAt(3));
+        int indexcasefin = 8 * (8 - ligne2) + colonne2;
+        String coupdep = coup.substring(0, 2);
+        // String substring(int beginIndex, int endIndex)
+        //utiliser la méthode contains
+
+        if(this.echiquier[indexcasedep].GetValCase() == 1){
+            ArrayList<Case> listecoup = CalculerCoupPion(coupdep);
+            return listecoup.contains(this.echiquier[indexcasedep]);
+        }
+        return true;
+    }
     public void Update(){
         // todo
     }
