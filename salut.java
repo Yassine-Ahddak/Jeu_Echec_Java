@@ -51,20 +51,23 @@ public class salut {
             
         // }
 
-        String coup = "e1e2";
-        int colonne = (int)coup.toLowerCase().charAt(0) -  97 ;
-        int ligne = Character.getNumericValue(coup.charAt(1));
-        int indexcasedep = 8 * (8 - ligne) + colonne;
-        int colonne2 = (int)coup.toLowerCase().charAt(2) -  97 ;
-        int ligne2 = Character.getNumericValue(coup.charAt(3));
-        int indexcasefin = 8 * (8 - ligne2) + colonne2;
-        String coupdep = coup.charAt(0) + "" + coup.charAt(1);
-        String coupfin = coup.charAt(2) + "" + coup.charAt(3);
+        // String coup = "e1e2";
+        // int colonne = (int)coup.toLowerCase().charAt(0) -  97 ;
+        // int ligne = Character.getNumericValue(coup.charAt(1));
+        // int indexcasedep = 8 * (8 - ligne) + colonne;
+        // int colonne2 = (int)coup.toLowerCase().charAt(2) -  97 ;
+        // int ligne2 = Character.getNumericValue(coup.charAt(3));
+        // int indexcasefin = 8 * (8 - ligne2) + colonne2;
+        // String coupdep = coup.charAt(0) + "" + coup.charAt(1);
+        // String coupfin = coup.charAt(2) + "" + coup.charAt(3);
 
-        System.out.println("case : " + coupdep + "; Ligne : " + ligne + "; colonne : " + colonne + " ; Id dans l'echiquier " + indexcasedep);
-        System.out.println("case : " + coupfin + "; Ligne : " + ligne2 + "; colonne : " + colonne2 + " ; Id dans l'echiquier " + indexcasefin);
+        // System.out.println("case : " + coupdep + "; Ligne : " + ligne + "; colonne : " + colonne + " ; Id dans l'echiquier " + indexcasedep);
+        // System.out.println("case : " + coupfin + "; Ligne : " + ligne2 + "; colonne : " + colonne2 + " ; Id dans l'echiquier " + indexcasefin);
 
-        
+        //Echiquier testechiquier = new Echiquier();
+        //testechiquier.Afficher();
+        //testechiquier.SetEstALEndroit(false);
+        //testechiquier.Afficher();
 
 
     }
