@@ -9,6 +9,9 @@ public class Case {
         this.idCase = idcase;
         this.iscasewhite = iscasewhite;
         this.valcase = valcase;
+        String coo = TabIndexToCoo(idcase);
+        this.colonne = (int)coo.charAt(0);
+        this.ligne = coo.charAt(1);
     }
 
     public Case(int idcase){
@@ -26,6 +29,15 @@ public class Case {
     public boolean GetIsCaseWhite(){
         return this.iscasewhite;
     }
+
+    public int GetColonne(){
+        return this.colonne;
+    }
+
+    public int GetLigne(){
+        return this.ligne;
+    }
+
     public String TabIndexToCoo(int i){
         String lettre = Character.toString((char)((int)'a' + i % 8));
         int chiffre = 8 - (i /8);

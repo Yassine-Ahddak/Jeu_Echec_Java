@@ -343,15 +343,37 @@ public class Echiquier{
         int colonne2 = (int)coup.toLowerCase().charAt(2) -  97 ;
         int ligne2 = Character.getNumericValue(coup.charAt(3));
         int indexcasefin = 8 * (8 - ligne2) + colonne2;
-        String coupdep = coup.substring(0, 2);
+        String coupdep = coup.charAt(0) + "" + coup.charAt(1);
+        String coupfin = coup.charAt(2) + "" + coup.charAt(3);
         // String substring(int beginIndex, int endIndex)
         //utiliser la méthode contains
 
-        if(this.echiquier[indexcasedep].GetValCase() == 1){
+        if(this.echiquier[indexcasedep].GetValCase() == 1 || this.echiquier[indexcasedep].GetValCase() == 7){
             ArrayList<Case> listecoup = CalculerCoupPion(coupdep);
-            return listecoup.contains(this.echiquier[indexcasedep]);
+            return listecoup.contains(this.echiquier[indexcasefin]);
         }
-        return true;
+
+        else if(this.echiquier[indexcasedep].GetValCase() == 2 || this.echiquier[indexcasedep].GetValCase() == 8){
+            ArrayList<Case> listecoup = CalculerCoupTour(coupdep);
+            return listecoup.contains(this.echiquier[indexcasefin]);
+        }
+        else if(this.echiquier[indexcasedep].GetValCase() == 9 || this.echiquier[indexcasedep].GetValCase() == 3){
+            ArrayList<Case> listecoup = CalculerCoupCavalier(coupdep);
+            return listecoup.contains(this.echiquier[indexcasefin]);
+        }
+        else if(this.echiquier[indexcasedep].GetValCase() == 10 || this.echiquier[indexcasedep].GetValCase() == 4){
+            ArrayList<Case> listecoup = CalculerCoupFou(coupdep);
+            return listecoup.contains(this.echiquier[indexcasefin]);
+        }
+        else if(this.echiquier[indexcasedep].GetValCase() == 11 || this.echiquier[indexcasedep].GetValCase() == 5){
+            ArrayList<Case> listecoup = CalculerCoupDame(coupdep);
+            return listecoup.contains(this.echiquier[indexcasefin]);
+        }
+        else if(this.echiquier[indexcasedep].GetValCase() == 12 || this.echiquier[indexcasedep].GetValCase() == 6){
+            ArrayList<Case> listecoup = CalculerCoupRoi(coupdep);
+            return listecoup.contains(this.echiquier[indexcasefin]);
+        }
+        return false;
     }
     public void Update(){
         // todo

@@ -1,10 +1,11 @@
+import java.io.Console;
 import java.util.*;
 public class salut {
     public static void main(String[] args)	{
         // code ici xd
         //System.out.println("salut");
-        //Echiquier toucouille = new Echiquier();
-        //toucouille.Afficher();
+        //Echiquier testechiquier = new Echiquier();
+        //testechiquier.Afficher();
         // int nbligne = 8;
         // System.out.print(nbligne + " ");
         // for(int i=0;i<64;i++){
@@ -50,6 +51,18 @@ public class salut {
             
         // }
 
+        String coup = "e1e2";
+        int colonne = (int)coup.toLowerCase().charAt(0) -  97 ;
+        int ligne = Character.getNumericValue(coup.charAt(1));
+        int indexcasedep = 8 * (8 - ligne) + colonne;
+        int colonne2 = (int)coup.toLowerCase().charAt(2) -  97 ;
+        int ligne2 = Character.getNumericValue(coup.charAt(3));
+        int indexcasefin = 8 * (8 - ligne2) + colonne2;
+        String coupdep = coup.charAt(0) + "" + coup.charAt(1);
+        String coupfin = coup.charAt(2) + "" + coup.charAt(3);
+
+        System.out.println("case : " + coupdep + "; Ligne : " + ligne + "; colonne : " + colonne + " ; Id dans l'echiquier " + indexcasedep);
+        System.out.println("case : " + coupfin + "; Ligne : " + ligne2 + "; colonne : " + colonne2 + " ; Id dans l'echiquier " + indexcasefin);
 
         
 
