@@ -64,7 +64,7 @@ public class salut {
         // System.out.println("case : " + coupdep + "; Ligne : " + ligne + "; colonne : " + colonne + " ; Id dans l'echiquier " + indexcasedep);
         // System.out.println("case : " + coupfin + "; Ligne : " + ligne2 + "; colonne : " + colonne2 + " ; Id dans l'echiquier " + indexcasefin);
 
-        //Echiquier testechiquier = new Echiquier();
+        Echiquier testechiquier = new Echiquier();
         //testechiquier.Afficher();
         //testechiquier.SetEstALEndroit(false);
         //testechiquier.Afficher();

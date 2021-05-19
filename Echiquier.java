@@ -124,6 +124,11 @@ public class Echiquier {
         }
     }
 
+    //
+
+
+    // A fix : sortir de la boucle quand on change de diagonale ou de ligne comme pour calculer coup tour par ex
+
     public ArrayList<Case> CalculerCoupTour(String casedep) {
         ArrayList<Case> res = new ArrayList<Case>();
         int colonne = (int) casedep.toLowerCase().charAt(0) - 97;
