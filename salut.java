@@ -64,7 +64,24 @@ public class salut {
         // System.out.println("case : " + coupdep + "; Ligne : " + ligne + "; colonne : " + colonne + " ; Id dans l'echiquier " + indexcasedep);
         // System.out.println("case : " + coupfin + "; Ligne : " + ligne2 + "; colonne : " + colonne2 + " ; Id dans l'echiquier " + indexcasefin);
 
-        Echiquier testechiquier = new Echiquier();
+        //Echiquier testechiquier = new Echiquier();
+        //System.out.println(String.format("%c", 0x2659));
+        // int test = (int)'a';
+        // System.out.println(test);
+        
+
+        // String coup = "e7";
+        // int[] res = new int[2];
+        // int colonne = (int)coup.toLowerCase().charAt(0) -  97 ;
+        // int ligne = 8 - Character.getNumericValue(coup.charAt(1));
+        // res[0] = ligne;
+        // res[1] = colonne;
+        // System.out.println("ligne :  "  +  res[0] + ";  colonne :  " + res[1]);
+
+        Echiquier test = new Echiquier(false);
+        test.Afficher();
+
+
         //testechiquier.Afficher();
         //testechiquier.SetEstALEndroit(false);
         //testechiquier.Afficher();

@@ -4,14 +4,14 @@ public class Case {
     private boolean iscasewhite;
     private int idCase;
     private int valcase;
+    private String coo;
 
-    public Case(int idcase,boolean iscasewhite,int valcase){
-        this.idCase = idcase;
+    public Case(int ligne, int colonne, boolean iscasewhite,int valcase){
+        this.colonne = colonne;
+        this.ligne = ligne;
         this.iscasewhite = iscasewhite;
         this.valcase = valcase;
-        String coo = TabIndexToCoo(idcase);
-        this.colonne = (int)coo.charAt(0);
-        this.ligne = coo.charAt(1);
+        this.coo = TabIndexToCoo(ligne,colonne);
     }
 
     public Case(int idcase){
@@ -38,16 +38,20 @@ public class Case {
         return this.ligne;
     }
 
-    public String TabIndexToCoo(int i){
-        String lettre = Character.toString((char)((int)'a' + i % 8));
-        int chiffre = 8 - (i /8);
+    public String TabIndexToCoo(int ligne,int colonne){
+        String lettre = Character.toString((char)((int)'a' + colonne));
+        int chiffre = 8 - ligne;
         return (lettre + chiffre);
     };
 
-    public int CooToTabIndex(String coup){
+    public int[] CooToTabIndex(String coup){
+        int[] res = new int[2];
         int colonne = (int)coup.toLowerCase().charAt(0) -  97 ;
-        int ligne = Character.getNumericValue(coup.charAt(1));
-        int res = 8 * (8 - ligne) + colonne;
+        int ligne = 8 - Character.getNumericValue(coup.charAt(1));
+        //int res = 8 * (8 - ligne) + colonne;
+        res[0] = ligne;
+        res[1] = colonne;
+
         return res;
     };
 }
