@@ -51,7 +51,6 @@ public class salut {
             
         // }
 
-        // String coup = "e1e2";
         // int colonne = (int)coup.toLowerCase().charAt(0) -  97 ;
         // int ligne = Character.getNumericValue(coup.charAt(1));
         // int indexcasedep = 8 * (8 - ligne) + colonne;
@@ -70,7 +69,7 @@ public class salut {
         // System.out.println(test);
         
 
-        // String coup = "e7";
+        //  String coup = "e6";
         // int[] res = new int[2];
         // int colonne = (int)coup.toLowerCase().charAt(0) -  97 ;
         // int ligne = 8 - Character.getNumericValue(coup.charAt(1));
@@ -78,8 +77,26 @@ public class salut {
         // res[1] = colonne;
         // System.out.println("ligne :  "  +  res[0] + ";  colonne :  " + res[1]);
 
-        Echiquier test = new Echiquier(false);
-        test.Afficher();
+        //Echiquier test = new Echiquier();
+        //test.Afficher();
+
+        String coup = "f5b8";
+
+        int colonne = (int)coup.toLowerCase().charAt(0) -  97 ;
+        int ligne = 8 - Character.getNumericValue(coup.charAt(1));
+        int colonne2 = (int)coup.toLowerCase().charAt(2) - 97;
+        int ligne2 = 8 - Character.getNumericValue(coup.charAt(3));
+
+        String coupdep = coup.charAt(0) + "" + coup.charAt(1);
+        String coupfin = coup.charAt(2) + "" + coup.charAt(3);
+
+        System.out.println("case : " + coupdep + "; Ligne : " + ligne + "; colonne : " + colonne);
+        System.out.println("case : " + coupfin + "; Ligne : " + ligne2 + "; colonne : " + colonne2);
+        System.out.println(colonne2 - colonne);
+        System.out.println(ligne2 - ligne);
+        System.out.println((Math.abs(colonne2 - colonne)) == (Math.abs(ligne2 - ligne)));
+
+        //System.out.print("\u001B[30mERROR  \033[0m salut");
 
 
         //testechiquier.Afficher();

@@ -1,15 +1,22 @@
 public class Dame extends Piece{
     public boolean EstCoupPossible(String coup){
-        int colonne = (int) coup.toLowerCase().charAt(0) - 97;
-        int ligne = Character.getNumericValue(coup.charAt(1));
-        int indexcasedep = 8 * (8 - ligne) + colonne;
-        int colonne2 = (int) coup.toLowerCase().charAt(2) - 97;
-        int ligne2 = Character.getNumericValue(coup.charAt(3));
-        int indexcasefin = 8 * (8 - ligne2) + colonne2;
-        String coupdep = coup.charAt(0) + "" + coup.charAt(1);
-        String coupfin = coup.charAt(2) + "" + coup.charAt(3);
-        return(Math.abs(indexcasedep - indexcasefin) % 7 == 0);
+        int colonne = (int)coup.toLowerCase().charAt(0) -  97 ;
+        int ligne = 8 - Character.getNumericValue(coup.charAt(1));
+        int colonne2 = (int)coup.toLowerCase().charAt(2) - 97;
+        int ligne2 = 8 - Character.getNumericValue(coup.charAt(3));
+
+        return (colonne == colonne2 || ligne == ligne2) && (Math.abs(colonne2 - colonne)) == (Math.abs(ligne2 - ligne));
 
         // A déterminer : comment faire en sorte que c'est bien dans la bonne diagonale
     };
 }
+
+
+    // 8 9 10 11 12 10 9 8
+    // 7 7 7 7 7 7 7 7
+    // 0 0 0 0 0 0 0 0
+    // 0 0 0 0 0 0 0 0
+    // 0 0 0 0 0 0 0 0
+    // 0 0 0 0 0 0 0 0
+    // 1 1 1 1 1 1 1 1
+    // 2 3 4 5 6 4 3 2

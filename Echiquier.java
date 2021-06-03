@@ -6,6 +6,9 @@ import javax.lang.model.util.ElementScanner14;
 public class Echiquier {
     private boolean estALendroit;
     private Case[][] echiquier;
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[90m";
+    public static final String ANSI_WHITE = "\u001B[37m";
 
     public Echiquier() {
         echiquier = new Case[8][8];
@@ -38,29 +41,29 @@ public class Echiquier {
                 if (echiquier[i][j].GetValCase() == 0) {
                     System.out.print("| " + " " + " ");
                 } else if (echiquier[i][j].GetValCase() == 7) {
-                    System.out.print("| " + String.format("%c", 0x2659) + " ");
+                    System.out.print("| " + String.format(ANSI_BLACK + "%c" + ANSI_RESET, 0x2659) + " ");
                 } else if (echiquier[i][j].GetValCase() == 8) {
-                    System.out.print("| " + String.format("%c", 0x2656) + " ");
+                    System.out.print("| " + String.format(ANSI_BLACK + "%c" + ANSI_RESET, 0x2656) + " ");
                 } else if (echiquier[i][j].GetValCase() == 9) {
-                    System.out.print("| " + String.format("%c", 0x2658) + " ");
+                    System.out.print("| " + String.format(ANSI_BLACK + "%c" + ANSI_RESET, 0x2658) + " ");
                 } else if (echiquier[i][j].GetValCase() == 10) {
-                    System.out.print("| " + String.format("%c", 0x2657) + " ");
+                    System.out.print("| " + String.format(ANSI_BLACK + "%c" + ANSI_RESET, 0x2657) + " ");
                 } else if (echiquier[i][j].GetValCase() == 11) {
-                    System.out.print("| " + String.format("%c", 0x2655) + " ");
+                    System.out.print("| " + String.format(ANSI_BLACK + "%c" + ANSI_RESET, 0x2655) + " ");
                 } else if (echiquier[i][j].GetValCase() == 12) {
-                    System.out.print("| " + String.format("%c", 0x2654) + " ");
+                    System.out.print("| " + String.format(ANSI_BLACK + "%c" + ANSI_RESET, 0x2654) + " ");
                 } else if (echiquier[i][j].GetValCase() == 1) {
-                    System.out.print("| " + String.format("%c", 0x265F) + " ");
+                    System.out.print("| " + String.format(ANSI_WHITE + "%c" + ANSI_RESET, 0x265F) + " ");
                 } else if (echiquier[i][j].GetValCase() == 2) {
-                    System.out.print("| " + String.format("%c", 0x265C) + " ");
+                    System.out.print("| " + String.format(ANSI_WHITE + "%c" + ANSI_RESET, 0x265C) + " ");
                 } else if (echiquier[i][j].GetValCase() == 3) {
-                    System.out.print("| " + String.format("%c", 0x265E) + " ");
+                    System.out.print("| " + String.format(ANSI_WHITE + "%c" + ANSI_RESET, 0x265E) + " ");
                 } else if (echiquier[i][j].GetValCase() == 4) {
-                    System.out.print("| " + String.format("%c", 0x265D) + " ");
+                    System.out.print("| " + String.format(ANSI_WHITE + "%c" + ANSI_RESET, 0x265D) + " ");
                 } else if (echiquier[i][j].GetValCase() == 5) {
-                    System.out.print("| " + String.format("%c", 0x265B) + " ");
+                    System.out.print("| " + String.format(ANSI_WHITE + "%c" + ANSI_RESET, 0x265B) + " ");
                 } else if (echiquier[i][j].GetValCase() == 6) {
-                    System.out.print("| " + String.format("%c", 0x265A) + " ");
+                    System.out.print("| " + String.format(ANSI_WHITE + "%c" + ANSI_RESET, 0x265A) + " ");
                 }
                 j += pas;
             }
