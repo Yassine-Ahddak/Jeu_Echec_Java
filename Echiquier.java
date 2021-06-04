@@ -29,6 +29,14 @@ public class Echiquier {
         this.init(echiquier);
     }
 
+    public Case[][] getEchiquier(){
+        return this.echiquier;
+    }
+
+    public boolean getEstALendroit(){
+        return this.estALendroit;
+    }
+
     public void Afficher() {
         System.out.println("  +---+---+---+---+---+---+---+---+");
         int i = 0;
