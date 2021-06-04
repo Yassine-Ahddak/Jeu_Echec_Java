@@ -2,6 +2,7 @@ import java.io.Console;
 import java.util.ArrayList;
 
 import javax.lang.model.util.ElementScanner14;
+import javax.swing.text.StyleConstants.ColorConstants;
 
 public class Echiquier {
     private boolean estALendroit;
@@ -20,6 +21,12 @@ public class Echiquier {
         echiquier = new Case[8][8];
         this.estALendroit = estALendroit;
         init();
+    }
+
+    public Echiquier(int[][] echiquier,boolean estALendroit){
+        this.echiquier = new Case[8][8];
+        this.estALendroit = estALendroit;
+        this.init(echiquier);
     }
 
     public void Afficher() {
@@ -144,6 +151,15 @@ public class Echiquier {
         }
     }
 
+    public void init(int[][] echiquier){
+        for(int i = 0; i < 8; i++){
+            for(int j = 0; j < 8; j++){
+                boolean iswhite = (echiquier[i][j] < 7);
+                this.echiquier[i][j] = new Case(i, j ,iswhite,echiquier[i][j] );
+            }
+        }
+    }
+
     public void AfficheString() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -153,141 +169,139 @@ public class Echiquier {
         }
     }
 
-    //
 
-    // A fix : sortir de la boucle quand on change de diagonale ou de ligne comme
-    // pour calculer coup tour par ex
 
-    // public ArrayList<Case> CalculerCoupTour(String casedep) {
-    //     ArrayList<Case> res = new ArrayList<Case>();
-    //     int colonne = (int) casedep.toLowerCase().charAt(0) - 97;
-    //     int ligne = Character.getNumericValue(casedep.charAt(1));
-    //     int indexcasedep = 8 * (8 - ligne) + colonne;
-    //     int i = indexcasedep + 8;
-    //     boolean estblanc = this.echiquier[indexcasedep].GetIsCaseWhite();
-    //     while (i < 64) {
-    //         boolean iswhite = this.echiquier[i].GetIsCaseWhite();
-    //         if (iswhite == estblanc) {
-    //             break;
-    //         } else if (iswhite != estblanc) {
-    //             res.add(echiquier[i]);
-    //             break;
-    //         } else if (this.echiquier[i].GetValCase() == 0) {
-    //             res.add(echiquier[i]);
-    //         }
-    //         i += 8;
-    //     }
-    //     i = indexcasedep - 8;
-    //     while (i >= 0) {
-    //         boolean iswhite = this.echiquier[i].GetIsCaseWhite();
-    //         if (iswhite == estblanc) {
-    //             break;
-    //         } else if (iswhite != estblanc) {
-    //             res.add(echiquier[i]);
-    //             break;
-    //         } else if (this.echiquier[i].GetValCase() == 0) {
-    //             res.add(echiquier[i]);
-    //         }
-    //         i -= 8;
-    //     }
-    //     i = indexcasedep + 1;
-    //     int lignecourante = (8 - (this.echiquier[i].GetIdCase() / 8));
-    //     while (i < 64 && ligne == lignecourante) {
-    //         boolean iswhite = this.echiquier[i].GetIsCaseWhite();
-    //         if (iswhite == estblanc) {
-    //             break;
-    //         } else if (iswhite != estblanc) {
-    //             res.add(echiquier[i]);
-    //             break;
-    //         } else if (this.echiquier[i].GetValCase() == 0) {
-    //             res.add(echiquier[i]);
-    //         }
-    //         i += 1;
-    //     }
-    //     i = indexcasedep - 1;
-    //     while (i >= 0 && ligne == lignecourante) {
-    //         boolean iswhite = this.echiquier[i].GetIsCaseWhite();
-    //         if (iswhite == estblanc) {
-    //             break;
-    //         } else if (iswhite != estblanc) {
-    //             res.add(echiquier[i]);
-    //             break;
-    //         } else if (this.echiquier[i].GetValCase() == 0) {
-    //             res.add(echiquier[i]);
-    //         }
-    //         i -= 1;
-    //     }
-    //     return res;
-    // }
 
-    // public ArrayList<Case> CalculerCoupFou(String casedep) {
-    //     ArrayList<Case> res = new ArrayList<Case>();
-    //     int colonne = (int) casedep.toLowerCase().charAt(0) - 97;
-    //     int ligne = Character.getNumericValue(casedep.charAt(1));
-    //     int indexcasedep = 8 * (8 - ligne) + colonne;
-    //     int i = indexcasedep + 9;
-    //     boolean estblanc = this.echiquier[indexcasedep].GetIsCaseWhite();
-    //     while (i + 9 < 64) {
-    //         boolean iswhite = this.echiquier[i].GetIsCaseWhite();
-    //         if (iswhite == estblanc) {
-    //             break;
-    //         } else if (iswhite != estblanc) {
-    //             res.add(echiquier[i]);
-    //             break;
-    //         } else if (this.echiquier[i].GetValCase() == 0) {
-    //             res.add(echiquier[i]);
-    //         }
-    //         i += 9;
-    //     }
-    //     i = indexcasedep - 7;
-    //     while (i >= 0) {
-    //         boolean iswhite = this.echiquier[i].GetIsCaseWhite();
-    //         if (iswhite == estblanc) {
-    //             break;
-    //         } else if (iswhite != estblanc) {
-    //             res.add(echiquier[i]);
-    //             break;
-    //         } else if (this.echiquier[i].GetValCase() == 0) {
-    //             res.add(echiquier[i]);
-    //         }
-    //         i -= 7;
-    //     }
-    //     i = indexcasedep + 7;
-    //     int lignecourante = (8 - (this.echiquier[i].GetIdCase() / 8));
-    //     while (i < 64 && ligne == lignecourante) {
-    //         boolean iswhite = this.echiquier[i].GetIsCaseWhite();
-    //         if (iswhite == estblanc) {
-    //             break;
-    //         } else if (iswhite != estblanc) {
-    //             res.add(echiquier[i]);
-    //             break;
-    //         } else if (this.echiquier[i].GetValCase() == 0) {
-    //             res.add(echiquier[i]);
-    //         }
-    //         i += 7;
-    //     }
-    //     i = indexcasedep - 9;
-    //     while (i >= 0 && ligne == lignecourante) {
-    //         boolean iswhite = this.echiquier[i].GetIsCaseWhite();
-    //         if (iswhite == estblanc) {
-    //             break;
-    //         } else if (iswhite != estblanc) {
-    //             res.add(echiquier[i]);
-    //             break;
-    //         } else if (this.echiquier[i].GetValCase() == 0) {
-    //             res.add(echiquier[i]);
-    //         }
-    //         i -= 9;
-    //     }
-    //     return res;
-    // }
+    public ArrayList<Case> CalculerCoupTour(String casedep) {
+        ArrayList<Case> res = new ArrayList<Case>();
+        int colonne = (int)casedep.toLowerCase().charAt(0) -  97 ;
+        int ligne = 8 - Character.getNumericValue(casedep.charAt(1));
+        int i = ligne + 1;
+        boolean estblanc = this.echiquier[ligne][colonne].GetIsCaseWhite();
+        while (i < 8) {
+            boolean iswhite = this.echiquier[i][colonne].GetIsCaseWhite();
+            if (this.echiquier[i][colonne].GetValCase() == 0) {
+                res.add(echiquier[i][colonne]);
+            } else if (iswhite != estblanc) {
+                res.add(echiquier[i][colonne]);
+                break;
+            } else {
+                break;
+            }
+            i += 1;
+        }
+        i = ligne - 1;
+        while (i >= 0) {
+            boolean iswhite = this.echiquier[i][colonne].GetIsCaseWhite();
+            if (this.echiquier[i][colonne].GetValCase() == 0) {
+                res.add(echiquier[i][colonne]);
+            } else if (iswhite != estblanc) {
+                res.add(echiquier[i][colonne]);
+                break;
+            } else {
+                break;
+            }
+            i -= 1;
+        }
+        i = colonne + 1;
+        while (i < 8) {
+            boolean iswhite = this.echiquier[i][colonne].GetIsCaseWhite();
+            if (this.echiquier[ligne][i].GetValCase() == 0) {
+                res.add(echiquier[ligne][i]);
+            } else if (iswhite != estblanc) {
+                res.add(echiquier[ligne][i]);
+                break;
+            } else {
+                break;
+            }
+            i += 1;
+        }
+        i = colonne - 1;
+        while (i >= 0) {
+            boolean iswhite = this.echiquier[i][colonne].GetIsCaseWhite();
+            if (this.echiquier[ligne][i].GetValCase() == 0) {
+                res.add(echiquier[ligne][i]);
+            } else if (iswhite != estblanc) {
+                res.add(echiquier[ligne][i]);
+                break;
+            } else {
+                break;
+            }
+            i -= 1;
+        }
+        return res;
+    }
 
-    // public ArrayList<Case> CalculerCoupDame(String casedep) {
-    //     ArrayList<Case> res = new ArrayList<Case>();
-    //     res.addAll(CalculerCoupFou(casedep));
-    //     res.addAll(CalculerCoupTour(casedep));
-    //     return res;
-    // }
+    public ArrayList<Case> CalculerCoupFou(String casedep) {
+        ArrayList<Case> res = new ArrayList<Case>();
+        int colonne = (int)casedep.toLowerCase().charAt(0) -  97 ;
+        int ligne = 8 - Character.getNumericValue(casedep.charAt(1));
+        int i = ligne + 1;
+        int j = colonne + 1;
+        boolean estblanc = this.echiquier[ligne][colonne].GetIsCaseWhite();
+        while (i < 8 && j < 8 && j >= 0 && i >=0) {
+            if (this.echiquier[i][j].GetValCase() == 0) {
+                res.add(echiquier[i][j]);
+            } else if (this.echiquier[i][j].GetIsCaseWhite() != estblanc) {
+                res.add(echiquier[i][j]);
+                break;
+            } else {
+                break;
+            }
+            i++;
+            j++;
+        }
+        i = ligne - 1;
+        j = colonne - 1;
+        while (i < 8 && j < 8 && j >= 0 && i >=0) {
+            if (this.echiquier[i][j].GetValCase() == 0) {
+                res.add(echiquier[i][j]);
+            } else if (this.echiquier[i][j].GetIsCaseWhite() != estblanc) {
+                res.add(echiquier[i][j]);
+                break;
+            } else {
+                break;
+            }
+            i -= 1;
+            j -=1;
+        }
+        i = ligne + 1;
+        j = colonne - 1;
+        while (i < 8 && j < 8 && j >= 0 && i >=0) {
+            if (this.echiquier[i][j].GetValCase() == 0) {
+                res.add(echiquier[i][j]);
+            } else if (this.echiquier[i][j].GetIsCaseWhite() != estblanc) {
+                res.add(echiquier[i][j]);
+                break;
+            } else {
+                break;
+            }
+            i += 1;
+            j -= 1;
+        }
+        i = ligne - 1;
+        i = colonne + 1;
+        while (i < 8 && j < 8 && j >= 0 && i >=0) {
+            if (this.echiquier[i][j].GetValCase() == 0) {
+                res.add(echiquier[i][j]);
+            } else if (this.echiquier[i][j].GetIsCaseWhite() != estblanc) {
+                res.add(echiquier[i][j]);
+                break;
+            } else {
+                break;
+            }
+            i -= 1;
+            j += 1;
+        }
+        return res;
+    }
+
+    public ArrayList<Case> CalculerCoupDame(String casedep) {
+        ArrayList<Case> res = new ArrayList<Case>();
+        res.addAll(CalculerCoupFou(casedep));
+        res.addAll(CalculerCoupTour(casedep));
+        return res;
+    }
 
     // public ArrayList<Case> CalculerCoupRoi(String casedep) {
     //     ArrayList<Case> res = new ArrayList<Case>();
