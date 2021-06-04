@@ -95,7 +95,7 @@ public class salut {
         System.out.println(colonne2 - colonne);
         System.out.println(ligne2 - ligne);
         System.out.println((Math.abs(colonne2 - colonne)) == (Math.abs(ligne2 - ligne)));
-
+        
         //System.out.print("\u001B[30mERROR  \033[0m salut");
 
 
