@@ -80,7 +80,7 @@ public class salut {
         //Echiquier test = new Echiquier();
         //test.Afficher();
 
-        String coup = "f5b8";
+        /*String coup = "f5b8";
 
         int colonne = (int)coup.toLowerCase().charAt(0) -  97 ;
         int ligne = 8 - Character.getNumericValue(coup.charAt(1));
@@ -94,8 +94,11 @@ public class salut {
         System.out.println("case : " + coupfin + "; Ligne : " + ligne2 + "; colonne : " + colonne2);
         System.out.println(colonne2 - colonne);
         System.out.println(ligne2 - ligne);
-        System.out.println((Math.abs(colonne2 - colonne)) == (Math.abs(ligne2 - ligne)));
+        System.out.println((Math.abs(colonne2 - colonne)) == (Math.abs(ligne2 - ligne)));*/
         
+        Partie test1 = new Partie();
+        //test1.sauvegarde();
+        test1.restaurer();
         //System.out.print("\u001B[30mERROR  \033[0m salut");
 
 
