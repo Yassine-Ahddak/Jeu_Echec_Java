@@ -357,8 +357,7 @@ public class Echiquier {
     //     ArrayList<Case> res = new ArrayList<Case>();
     //     int colonne = (int) casedep.toLowerCase().charAt(0) - 97;
     //     int ligne = Character.getNumericValue(casedep.charAt(1));
-    //     int indexcasedep = 8 * (8 - ligne) + colonne;
-    //     boolean estblanc = this.echiquier[indexcasedep].GetIsCaseWhite();
+    //     boolean estblanc = this.echiquier[ligne][colonne].GetIsCaseWhite();
     //     if (estblanc) {
     //         if (this.echiquier[indexcasedep - 7].GetIsCaseWhite() != estblanc) {
     //             res.add(this.echiquier[indexcasedep - 7]);

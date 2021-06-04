@@ -96,9 +96,16 @@ public class salut {
         System.out.println(ligne2 - ligne);
         System.out.println((Math.abs(colonne2 - colonne)) == (Math.abs(ligne2 - ligne)));*/
         
-        Partie test1 = new Partie();
+        //Partie test1 = new Partie();
+        //test1.restaurer();
         //test1.sauvegarde();
-        test1.restaurer();
+        //test1.getPartieEchiquier().Afficher();
+        // for(int i = 0; i < 8 ; i++){
+        //     for(int j = 0; j < 8 ; j++){
+        //         System.out.print(salut[i][j] + " ");
+        //     }
+        //     System.out.println("");
+        // }
         //System.out.print("\u001B[30mERROR  \033[0m salut");
 
 

@@ -26,6 +26,10 @@ public class Partie extends Echiquier{
 
     //}
 
+    public Echiquier getPartieEchiquier(){
+        return this.echiquier;
+    }
+    
     public void sauvegarde(){
         File file = new File("C:\\Users\\yahdd\\Documents\\IUT\\Semestre 2\\projet\\prgm_jeu_echec\\Jeu_Echec_Java\\sauvegarde.txt");
         //String testsauver = "test en cours";
@@ -70,7 +74,8 @@ public class Partie extends Echiquier{
     }
 
     public void restaurer(){
-        File file = new File("C:\\Users\\yahdd\\Documents\\IUT\\Semestre 2\\projet\\prgm_jeu_echec\\Jeu_Echec_Java\\sauvegarde.txt");
+        //File file = new File("C:\\Users\\yahdd\\Documents\\IUT\\Semestre 2\\projet\\prgm_jeu_echec\\Jeu_Echec_Java\\sauvegarde.txt");
+        File file = new File("C:\\Users\\tehre\\Desktop\\IUT\\gooboz\\Jeu_Echec_Java\\sauvegarde.txt");
         if(!file.exists())
         {
             System.out.println("Chargement impossible : fichier inexistant");
@@ -79,14 +84,34 @@ public class Partie extends Echiquier{
             try{
                 BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
                 String line = reader.readLine();
-                String line1 = reader.read();
+                int[][] res = new int[8][8];
+                int lignetab = 0;
                 while(line != null)
                 {
-                    System.out.println(line);
+                    //System.out.println(line);
+                    int colonnetab = 0;
+                    int indexstring = 0;
+                    while (indexstring < line.length()){
+                        String elementtableau = "";
+                        while( indexstring < line.length() && line.charAt(indexstring) != (char)32){
+                            elementtableau = elementtableau + Character.toString(line.charAt(indexstring));
+                            //System.out.println("J'ajoute l'element : " + Character.toString(line.charAt(indexstring)));
+                            indexstring += 1;
+                        }
+                        //System.out.println("Element tableau : " + elementtableau);
+                        res[lignetab][colonnetab] = Integer.parseInt(elementtableau);
+                        elementtableau = "";
+                        if(indexstring < line.length()){
+                            indexstring +=1;
+                        }
+                        colonnetab +=1;
+                    }
+                    lignetab += 1;
                     line = reader.readLine();
-                    line = reader.readLine();
+                    indexstring = 0;
                 }
                 reader.close();
+                this.echiquier.init(res);
             } catch(IOException e){
                 e.printStackTrace();
             }
