@@ -1,5 +1,10 @@
 public class Tour extends Piece{
 
+    public Tour(boolean iswhite){
+        super((iswhite) ?2:8);
+
+    }
+
     public boolean EstCoupValide(String coup){
         int colonne = (int)coup.toLowerCase().charAt(0) -  97 ;
         int ligne = 8 - Character.getNumericValue(coup.charAt(1));

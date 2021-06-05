@@ -1,4 +1,14 @@
 public class Dame extends Piece{
+
+    public Dame(int idPiece){
+        super(idPiece);
+    }
+
+    public Dame(boolean iswhite){
+        super((iswhite) ?5:11);
+
+    }
+
     public boolean EstCoupPossible(String coup){
         int colonne = (int)coup.toLowerCase().charAt(0) -  97 ;
         int ligne = 8 - Character.getNumericValue(coup.charAt(1));

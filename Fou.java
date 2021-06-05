@@ -1,4 +1,9 @@
 public class Fou extends Piece{
+
+    public Fou(boolean iswhite){
+        super((iswhite) ?4:10);
+
+    }
     public boolean EstCoupValide(String coup){
         int colonne = (int)coup.toLowerCase().charAt(0) -  97 ;
         int ligne = 8 - Character.getNumericValue(coup.charAt(1));

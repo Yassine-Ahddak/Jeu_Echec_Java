@@ -3,6 +3,7 @@ public class Case {
     private int colonne;
     private boolean iscasewhite;
     private int idCase;
+    private Piece piece;
     private int valcase;
     private String coo;
 
@@ -11,6 +12,19 @@ public class Case {
         this.ligne = ligne;
         this.iscasewhite = iscasewhite;
         this.valcase = valcase;
+        this.coo = TabIndexToCoo(ligne,colonne);
+    }
+
+    public Case(int ligne, int colonne, Piece piece){
+        this.colonne = colonne;
+        this.ligne = ligne;
+        this.piece = piece;
+        this.coo = TabIndexToCoo(ligne,colonne);
+    }
+
+    public Case(int ligne, int colonne){
+        this.colonne = colonne;
+        this.ligne = ligne;
         this.coo = TabIndexToCoo(ligne,colonne);
     }
 
@@ -36,6 +50,14 @@ public class Case {
 
     public int GetLigne(){
         return this.ligne;
+    }
+
+    public Piece getPiece(){
+        return this.piece;
+    }
+
+    public void setPiece(Piece piece){
+        this.piece = piece;
     }
 
     public String TabIndexToCoo(int ligne,int colonne){

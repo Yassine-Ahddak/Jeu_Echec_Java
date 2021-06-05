@@ -1,5 +1,7 @@
 import java.io.Console;
 import java.util.*;
+
+import javax.print.event.PrintEvent;
 public class salut {
     public static void main(String[] args)	{
         // code ici xd
@@ -107,7 +109,35 @@ public class salut {
         //     System.out.println("");
         // }
         //System.out.print("\u001B[30mERROR  \033[0m salut");
+        
+        Dame dame = new Dame(false);
+        Case case1 = new Case(0,5,dame);
+        Case case2 = new Case(0,6);
 
+        if(case2.getPiece() == null){
+            System.out.println("Salut");
+        }
+
+        if(case1.getPiece() != null){
+            System.out.println("Salut case 1 n'est pas vide");
+        }
+
+        Piece piecetmp = case1.getPiece();
+        
+        case1.setPiece(case2.getPiece());
+        case2.setPiece(piecetmp);
+
+        if(case1.getPiece() == null){
+            System.out.println("Salut case 1 est devenue vide");
+        }
+
+
+
+        // boolean saluet = dame.GetIsWhite();
+        // int toucouy = dame.GetidPiece();
+        // System.out.println(" blanc ? : " + saluet + "  ; id : " + toucouy);
+
+        //Case case1 = new Case(ligne, colonne, iscasewhite, valcase)
 
         //testechiquier.Afficher();
         //testechiquier.SetEstALEndroit(false);
