@@ -32,6 +32,20 @@ public class Partie {
         return this.echiquier;
     }
 
+    public boolean EstCoupCorrectSyntax(String coup){
+        if(coup.length() != 4){
+            return false;
+        }
+        int valasciichar0 = (int)coup.toLowerCase().charAt(0);
+        int valasciichar1 = (int)coup.toLowerCase().charAt(1);
+        int valasciichar2 = (int)coup.toLowerCase().charAt(2);
+        int valasciichar3 = (int)coup.toLowerCase().charAt(3);
+        return( valasciichar0 >= 97 && valasciichar0 <= 104 && 
+                valasciichar1 >= 49 && valasciichar1 <= 56 && 
+                valasciichar2 >= 97 && valasciichar2 <= 104 && 
+                valasciichar3 >= 49 && valasciichar3 <= 56 );
+    }
+
     public void sauvegarde() {
         //File file = new File("C:\\Users\\yahdd\\Documents\\IUT\\Semestre 2\\projet\\prgm_jeu_echec\\Jeu_Echec_Java\\sauvegarde.txt");
         File file = new File("C:\\Users\\tehre\\Desktop\\IUT\\gooboz\\Jeu_Echec_Java\\sauvegarde.txt");

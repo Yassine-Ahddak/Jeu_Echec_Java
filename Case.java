@@ -48,6 +48,10 @@ public class Case {
         return this.colonne;
     }
 
+    public String GetCoo(){
+        return this.coo;
+    }
+
     public int GetLigne(){
         return this.ligne;
     }
@@ -79,8 +83,8 @@ public class Case {
 
     public String toString(){
         if(piece != null){
-           return("Coo : " + this.coo +"; ligne : " + this.ligne +  "; colonne : " + this.colonne + this.piece.toString()); 
+           return("Localisation  : " + this.coo + "; Format matrice : [" + this.ligne +  "," + this.colonne +"] " + this.piece.toString()); 
         }
-        return("Coo : " + this.coo + " ; ligne : " + this.ligne +  "; colonne : " + this.colonne + "; Case vide");
+        return("Localisation  : " + this.coo + "; Format matrice : [" + this.ligne +  "," + this.colonne +"] " + "; Case vide");
     }
 }

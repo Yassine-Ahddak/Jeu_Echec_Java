@@ -113,21 +113,43 @@ public class Echiquier {
         // System.out.println(" i : " + i + ";pas : " + pas + ";nbligne : " + nbligne);
     }
 
+    public void ActuCoups(){
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if(this.echiquier[i][j].getPiece()!= null){
+                    int idPiece = this.echiquier[i][j].getPiece().GetidPiece();
+                    this.echiquier[i][j].getPiece().setListeCoups(CalculerCoup(this.echiquier[i][j],idPiece));
+                }
+            }
+        }
+    }
+
     public void init() {
         int i = 0;
         int j = 0;
+        Piece piecetmp;
         while (j < 5) {
-            this.echiquier[i][j] = new Case(i, j, (new Piece(8 + j)));
+            int idPiece = 8 + j;
+            piecetmp = new Piece((idPiece));
+            //piecetmp.setListeCoups(CalculerCoup(this.echiquier[i][j], idPiece));
+            this.echiquier[i][j] = new Case(i, j, (new Piece(idPiece)));
+            
             j += 1;
         }
         while (j < 8) {
-            this.echiquier[i][j] = new Case(i, j, (new Piece(10 - (j - 5))));
+            int idPiece = 10 - (j - 5);
+            piecetmp = new Piece(idPiece);
+            //piecetmp.setListeCoups(CalculerCoup(this.echiquier[i][j], idPiece));
+            this.echiquier[i][j] = new Case(i, j, piecetmp);
+            
             j += 1;
         }
         i = 1;
         j = 0;
         while (j < 8) {
-            this.echiquier[i][j] = new Case(i, j, (new Piece(7)));
+            piecetmp = new Piece(7);
+            //piecetmp.setListeCoups(CalculerCoup(this.echiquier[i][j], 7));
+            this.echiquier[i][j] = new Case(i, j, piecetmp);
             j += 1;
         }
         i = 2;
@@ -156,7 +178,11 @@ public class Echiquier {
             this.echiquier[i][j] = new Case(i, j, (new Piece(4 - (j - 5))));
             j += 1;
         }
+
+        this.ActuCoups();
     }
+
+
 
     public void init(int[][] echiquier) {
         for (int i = 0; i < 8; i++) {
@@ -168,30 +194,33 @@ public class Echiquier {
                 }
             }
         }
+
+        this.ActuCoups();
     }
 
     public void AfficheString() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                if (this.echiquier[i][j].getPiece() != null) {
-                    System.out.println("Ligne : " + this.echiquier[i][j].GetLigne() + "; Colonne : "
-                            + this.echiquier[i][j].GetColonne() + " ; IsWhite : "
-                            + this.echiquier[i][j].getPiece().GetIsWhite() + " ; Valeur : "
-                            + this.echiquier[i][j].getPiece().GetidPiece());
-                } else {
-                    System.out.println("Ligne : " + this.echiquier[i][j].GetLigne() + "; Colonne : "
-                            + this.echiquier[i][j].GetColonne() + " ; IsWhite : " + false + " ; Valeur : " + 0);
-                }
+
+                System.out.println(this.echiquier[i][j].toString() + "\n");
+                // if (this.echiquier[i][j].getPiece() != null) {
+                //     System.out.println(
+                // } else {
+                //     System.out.println("Ligne : " + this.echiquier[i][j].GetLigne() + "; Colonne : "
+                //             + this.echiquier[i][j].GetColonne() + " ; IsWhite : " + false + " ; Valeur : " + 0);
+                // }
             }
         }
     }
 
-    public ArrayList<Case> CalculerCoupTour(String casedep) {
+    public ArrayList<Case> CalculerCoupTour(Case casedep) {
         ArrayList<Case> res = new ArrayList<Case>();
-        int colonne = (int) casedep.toLowerCase().charAt(0) - 97;
-        int ligne = 8 - Character.getNumericValue(casedep.charAt(1));
+        int colonne = casedep.GetColonne();
+        int ligne = casedep.GetLigne();
+        // int colonne = (int) casedep.toLowerCase().charAt(0) - 97;
+        // int ligne = 8 - Character.getNumericValue(casedep.charAt(1));
         int i = ligne + 1;
-        boolean estblanc = this.echiquier[ligne][colonne].getPiece().GetIsWhite();
+        boolean estblanc = casedep.getPiece().GetIsWhite();
         while (i < 8) {
             if (this.echiquier[i][colonne].getPiece() != null) {
                 boolean iswhite = this.echiquier[i][colonne].getPiece().GetIsWhite();
@@ -254,15 +283,17 @@ public class Echiquier {
         return res;
     }
 
-    public ArrayList<Case> CalculerCoupFou(String casedep) {
+    public ArrayList<Case> CalculerCoupFou(Case casedep) {
         ArrayList<Case> res = new ArrayList<Case>();
-        int colonne = (int) casedep.toLowerCase().charAt(0) - 97;
-        int ligne = 8 - Character.getNumericValue(casedep.charAt(1));
+        int colonne = casedep.GetColonne();
+        int ligne = casedep.GetLigne();
+        // int colonne = (int) casedep.toLowerCase().charAt(0) - 97;
+        // int ligne = 8 - Character.getNumericValue(casedep.charAt(1));
         int i = ligne + 1;
         int j = colonne + 1;
         while (i < 8 && j < 8 && j >= 0 && i >= 0) {
             if (this.echiquier[i][j].getPiece() != null) {
-                boolean estblanc = this.echiquier[ligne][colonne].getPiece().GetIsWhite();
+                boolean estblanc = casedep.getPiece().GetIsWhite();
                 if (this.echiquier[i][j].getPiece().GetIsWhite() != estblanc) {
                     res.add(echiquier[i][j]);
                     break;
@@ -280,7 +311,7 @@ public class Echiquier {
         j = colonne - 1;
         while (i < 8 && j < 8 && j >= 0 && i >= 0) {
             if (this.echiquier[i][j].getPiece() != null) {
-                boolean estblanc = this.echiquier[ligne][colonne].getPiece().GetIsWhite();
+                boolean estblanc = casedep.getPiece().GetIsWhite();
                 if (this.echiquier[i][j].getPiece().GetIsWhite() != estblanc) {
                     res.add(echiquier[i][j]);
                     break;
@@ -298,7 +329,7 @@ public class Echiquier {
         j = colonne - 1;
         while (i < 8 && j < 8 && j >= 0 && i >= 0) {
             if (this.echiquier[i][j].getPiece() != null) {
-                boolean estblanc = this.echiquier[ligne][colonne].getPiece().GetIsWhite();
+                boolean estblanc = casedep.getPiece().GetIsWhite();
                 if (this.echiquier[i][j].getPiece().GetIsWhite() != estblanc) {
                     res.add(echiquier[i][j]);
                     break;
@@ -316,7 +347,7 @@ public class Echiquier {
         j = colonne + 1;
         while (i < 8 && j < 8 && j >= 0 && i >= 0) {
             if (this.echiquier[i][j].getPiece() != null) {
-                boolean estblanc = this.echiquier[ligne][colonne].getPiece().GetIsWhite();
+                boolean estblanc = casedep.getPiece().GetIsWhite();
                 if (this.echiquier[i][j].getPiece().GetIsWhite() != estblanc) {
                     res.add(echiquier[i][j]);
                     break;
@@ -335,22 +366,49 @@ public class Echiquier {
 
     }
 
-    public ArrayList<Case> CalculerCoupDame(String casedep) {
+    public ArrayList<Case> CalculerCoupDame(Case casedep) {
         ArrayList<Case> res = new ArrayList<Case>();
+        // int colonne = casedep.GetColonne();
+        // int ligne = casedep.GetLigne();
         res.addAll(CalculerCoupFou(casedep));
         res.addAll(CalculerCoupTour(casedep));
         return res;
     }
 
-    public ArrayList<Case> CalculerCoupRoi(String casedep) {
+    public boolean CoupMetEnEchec(Case casedep, Case casearr) {
+        // int ligne = casedep.GetLigne();
+        // int colonne = casedep.GetColonne();
+        boolean estblanc = casedep.getPiece().GetIsWhite();
+
+        int ligne2 = casearr.GetLigne();
+        int colonne2 = casearr.GetColonne();
+
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (this.echiquier[i][j].getPiece() != null) {
+                    if (this.echiquier[i][j].getPiece().GetIsWhite() != estblanc) {
+                        if (this.echiquier[i][j].getPiece().GetListeCoups()
+                                .contains(this.echiquier[ligne2][colonne2])) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public ArrayList<Case> CalculerCoupRoi(Case casedep) {
         ArrayList<Case> res = new ArrayList<Case>();
-        int colonne = (int) casedep.toLowerCase().charAt(0) - 97;
-        int ligne = 8 - Character.getNumericValue(casedep.charAt(1));
-        boolean estblanc = this.echiquier[ligne][colonne].getPiece().GetIsWhite();
+        // int colonne = (int) casedep.toLowerCase().charAt(0) - 97;
+        // int ligne = 8 - Character.getNumericValue(casedep.charAt(1));
+        int colonne = casedep.GetColonne();
+        int ligne = casedep.GetLigne();
+        boolean estblanc = casedep.getPiece().GetIsWhite();
         int i = 0;
         int j = 0;
-        int[][] listedecalages = { { -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, { 1, 0 }, { 1, -1 },
-                { 0, -1 } };
+        int[][] listedecalages = { { -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, { 1, 0 }, { 1, -1 }, { 0, -1 } };
         for (int ind = 0; ind < 8; ind++) {
             i = ligne + listedecalages[ind][0];
             j = colonne + listedecalages[ind][1];
@@ -366,11 +424,13 @@ public class Echiquier {
         return res;
     }
 
-    public ArrayList<Case> CalculerCoupCavalier(String casedep) {
+    public ArrayList<Case> CalculerCoupCavalier(Case casedep) {
         ArrayList<Case> res = new ArrayList<Case>();
-        int colonne = (int) casedep.toLowerCase().charAt(0) - 97;
-        int ligne = 8 - Character.getNumericValue(casedep.charAt(1));
-        boolean estblanc = this.echiquier[ligne][colonne].getPiece().GetIsWhite();
+        int colonne = casedep.GetColonne();
+        int ligne = casedep.GetLigne();
+        // int colonne = (int) casedep.toLowerCase().charAt(0) - 97;
+        // int ligne = 8 - Character.getNumericValue(casedep.charAt(1));
+        boolean estblanc = casedep.getPiece().GetIsWhite();
         int i = 0;
         int j = 0;
         int[][] listedecalages = { { -2, -1 }, { -2, 1 }, { -1, 2 }, { 1, 2 }, { 2, 1 }, { 2, -1 }, { 1, -2 },
@@ -390,11 +450,13 @@ public class Echiquier {
         return res;
     }
 
-    public ArrayList<Case> CalculerCoupPion(String casedep) {
+    public ArrayList<Case> CalculerCoupPion(Case casedep) {
         ArrayList<Case> res = new ArrayList<Case>();
-        int colonne = (int) casedep.toLowerCase().charAt(0) - 97;
-        int ligne = 8 - Character.getNumericValue(casedep.charAt(1));
-        boolean estblanc = this.echiquier[ligne][colonne].getPiece().GetIsWhite();
+        int colonne = casedep.GetColonne();
+        int ligne = casedep.GetLigne();
+        // int colonne = (int) casedep.toLowerCase().charAt(0) - 97;
+        // int ligne = 8 - Character.getNumericValue(casedep.charAt(1));
+        boolean estblanc = casedep.getPiece().GetIsWhite();
 
         int pas = -1;
         // int[][] listedecalages = { { -1, -1 }, { -1, 0 }, { -2, 0 }, { -1, 1 } };
@@ -443,59 +505,84 @@ public class Echiquier {
                 }
             }
         }
-
-        // for (int ind = 0; ind < 4; ind++) {
-        // i = ligne + listedecalages[ind][0];
-        // j = colonne + listedecalages[ind][1];
-        // if (0 <= i && i < 8 && 0 <= j && j < 8) {
-        // if (this.echiquier[i][j].getPiece() == null) {
-        // res.add(this.echiquier[i][j]);
-        // } else if (this.echiquier[i][j].getPiece().GetIsWhite() != estblanc) {
-        // res.add(this.echiquier[i][j]);
-        // }
-
-        // }
-        // }
         return res;
     }
 
-    public boolean EstCoupValide(String coup) {
+    public ArrayList<Case> CalculerCoup(Case casedep, int idPiece) {
+
+        if (idPiece == 1 || idPiece == 7) {
+            return CalculerCoupPion(casedep);
+        } else if (idPiece == 2 || idPiece == 8) {
+            return CalculerCoupTour(casedep);
+        } else if (idPiece == 9 || idPiece == 3) {
+            return CalculerCoupCavalier(casedep);
+        } else if (idPiece == 10 || idPiece == 4) {
+            return CalculerCoupFou(casedep);
+        } else if (idPiece == 11 || idPiece == 5) {
+            return CalculerCoupDame(casedep);
+        } else if (idPiece == 12 || idPiece == 6) {
+            return CalculerCoupRoi(casedep);
+        }
+        return (new ArrayList<Case>());
+    }
+
+    // for (int ind = 0; ind < 4; ind++) {
+    // i = ligne + listedecalages[ind][0];
+    // j = colonne + listedecalages[ind][1];
+    // if (0 <= i && i < 8 && 0 <= j && j < 8) {
+    // if (this.echiquier[i][j].getPiece() == null) {
+    // res.add(this.echiquier[i][j]);
+    // } else if (this.echiquier[i][j].getPiece().GetIsWhite() != estblanc) {
+    // res.add(this.echiquier[i][j]);
+    // }
+
+    // }
+    // }
+    // return res;
+    // }
+
+    public boolean EstCoupValide(Case casedep, Case casearr) {
         // On verifiera si le coup entré correspont au bon camp dans la classe Game
         // (boucle principale)
-        int colonne = (int)coup.toLowerCase().charAt(0) -  97 ;
-        int ligne = 8 - Character.getNumericValue(coup.charAt(1));
-        int colonne2 = (int) coup.toLowerCase().charAt(2) - 97;
-        int ligne2 = 8 - Character.getNumericValue(coup.charAt(3));
-        String coupdep = coup.charAt(0) + "" + coup.charAt(1);
-        String coupfin = coup.charAt(2) + "" + coup.charAt(3);
+        // int colonne = (int)coup.toLowerCase().charAt(0) - 97 ;
+        // int ligne = 8 - Character.getNumericValue(coup.charAt(1));
+        // int colonne2 = (int) coup.toLowerCase().charAt(2) - 97;
+        // int ligne2 = 8 - Character.getNumericValue(coup.charAt(3));
+        // String coupdep = coup.charAt(0) + "" + coup.charAt(1);
+        // String coupfin = coup.charAt(2) + "" + coup.charAt(3);
         // String substring(int beginIndex, int endIndex)
         // utiliser la méthode contains
 
+        int ligne = casedep.GetLigne();
+        int colonne = casedep.GetColonne();
+        int ligne2 = casearr.GetLigne();
+        int colonne2 = casearr.GetColonne();
+
         if (this.echiquier[ligne][colonne].getPiece().GetidPiece() == 1
                 || this.echiquier[ligne][colonne].getPiece().GetidPiece() == 7) {
-            ArrayList<Case> listecoup = CalculerCoupPion(coupdep);
+            ArrayList<Case> listecoup = CalculerCoupPion(casedep);
             return listecoup.contains(this.echiquier[ligne2][colonne2]);
         }
 
         else if (this.echiquier[ligne][colonne].getPiece().GetidPiece() == 2
                 || this.echiquier[ligne][colonne].getPiece().GetidPiece() == 8) {
-            ArrayList<Case> listecoup = CalculerCoupTour(coupdep);
+            ArrayList<Case> listecoup = CalculerCoupTour(casedep);
             return listecoup.contains(this.echiquier[ligne2][colonne2]);
         } else if (this.echiquier[ligne][colonne].getPiece().GetidPiece() == 9
                 || this.echiquier[ligne][colonne].getPiece().GetidPiece() == 3) {
-            ArrayList<Case> listecoup = CalculerCoupCavalier(coupdep);
+            ArrayList<Case> listecoup = CalculerCoupCavalier(casedep);
             return listecoup.contains(this.echiquier[ligne2][colonne2]);
         } else if (this.echiquier[ligne][colonne].getPiece().GetidPiece() == 10
                 || this.echiquier[ligne][colonne].getPiece().GetidPiece() == 4) {
-            ArrayList<Case> listecoup = CalculerCoupFou(coupdep);
+            ArrayList<Case> listecoup = CalculerCoupFou(casedep);
             return listecoup.contains(this.echiquier[ligne2][colonne2]);
         } else if (this.echiquier[ligne][colonne].getPiece().GetidPiece() == 11
                 || this.echiquier[ligne][colonne].getPiece().GetidPiece() == 5) {
-            ArrayList<Case> listecoup = CalculerCoupDame(coupdep);
+            ArrayList<Case> listecoup = CalculerCoupDame(casedep);
             return listecoup.contains(this.echiquier[ligne2][colonne2]);
         } else if (this.echiquier[ligne][colonne].getPiece().GetidPiece() == 12
                 || this.echiquier[ligne][colonne].getPiece().GetidPiece() == 6) {
-            ArrayList<Case> listecoup = CalculerCoupRoi(coupdep);
+            ArrayList<Case> listecoup = CalculerCoupRoi(casedep);
             return listecoup.contains(this.echiquier[ligne2][colonne2]);
         }
         return false;

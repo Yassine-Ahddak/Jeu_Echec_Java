@@ -103,18 +103,37 @@ public class salut {
          * ligne)));
          */
 
-        Partie test1 = new Partie();
-        test1.restaurer();
-        Echiquier echiquerqrfqeqesf = test1.getPartieEchiquier();
-        test1.getPartieEchiquier().Afficher();
-        echiquerqrfqeqesf.getEchiquier()[5][2].getPiece().setMoved(true);
-        ArrayList<Case> listecoup = echiquerqrfqeqesf.CalculerCoupRoi("c3");
-        for(Case cases : listecoup){
-            System.out.println(cases.toString() + "\n");
-            
-        }
+        // Partie test1 = new Partie();
+        // test1.restaurer();
+        // test1.getPartieEchiquier().Afficher();
+        //e5 = 3,4
+        // System.out.println(test1.getPartieEchiquier().getEchiquier()[3][4].getPiece().AfficheListeCoups());
+        // System.out.println("\n");
+        
+        //test1.getPartieEchiquier().AfficheString();
+        //Echiquier feso = test1.getPartieEchiquier();
+        //e5e6
 
-        System.out.println(echiquerqrfqeqesf.EstCoupValide("c3b5"));
+        //System.out.println(test1.getPartieEchiquier().CoupMetEnEchec(test1.getPartieEchiquier().getEchiquier()[3][4], test1.getPartieEchiquier().getEchiquier()[4][5]));
+
+        //System.out.println((test1.EstCoupCorrectSyntax("c1h8")));
+
+
+        // Echiquier echiquerqrfqeqesf = test1.getPartieEchiquier();
+        // test1.getPartieEchiquier().Afficher();
+        // echiquerqrfqeqesf.getEchiquier()[5][2].getPiece().setMoved(true);
+        // ArrayList<Case> listecoup = echiquerqrfqeqesf.CalculerCoupRoi("c3");
+        // for(Case cases : listecoup){
+        //     System.out.println(cases.toString() + "\n");
+            
+        // }
+
+        // System.out.println(echiquerqrfqeqesf.EstCoupValide("c3b5"));
+
+
+
+
+
         //test1.sauvegarde();
         // test1.getPartieEchiquier().Afficher();
         // for (int i = 0; i < 8; i++) {

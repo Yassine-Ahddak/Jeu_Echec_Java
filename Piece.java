@@ -48,11 +48,23 @@ public class Piece {
         this.idPiece = idPiece;
     }
 
+    public void setListeCoups(ArrayList<Case> listecoups){
+        this.listeCoups= listecoups;
+    }
+
     public void setisWhite(boolean iswhite){
         this.isWhite = iswhite;
     }
 
+    public String AfficheListeCoups(){
+        String res = "Liste de coups de la piece : \n";
+        for(int i = 0 ; i < this.listeCoups.size() ; i++){
+            res += this.listeCoups.get(i).GetCoo() + "\n";
+        }
+        return res;
+    }
+
     public String toString(){
-        return("; Id de la piece : " + this.idPiece + " ; isWhite : " + this.isWhite);
+        return("; Id de la piece : " + this.idPiece + " ; isWhite : " + this.isWhite + "\n" + AfficheListeCoups()) + "\n -------------------------------------------- \n ";
     }
 }
