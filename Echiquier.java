@@ -320,82 +320,81 @@ public class Echiquier {
         return res;
     }
 
-    // public ArrayList<Case> CalculerCoupRoi(String casedep) {
-    //     ArrayList<Case> res = new ArrayList<Case>();
-    //     int colonne = (int) casedep.toLowerCase().charAt(0) - 97;
-    //     int ligne = Character.getNumericValue(casedep.charAt(1));
-    //     int indexcasedep = 8 * (8 - ligne) + colonne;
-    //     boolean estblanc = this.echiquier[indexcasedep].GetIsCaseWhite();
-    //     // -1 -9 -8 -7 +1 +9 +8 +7 <--- valeurs à check
-    //     int[] listeindices = { -1, -9, -8, -7, 1, 9, 8, 7 };
-    //     for (int i : listeindices) {
-    //         int index = indexcasedep + i;
-    //         if (index >= 0 && index < 64) {
-    //             if (this.echiquier[index].GetIsCaseWhite() != estblanc) {
-    //                 res.add(this.echiquier[i]);
-    //             } else if (this.echiquier[index].GetValCase() == 0) {
-    //                 res.add(this.echiquier[i]);
-    //             }
-    //         }
-    //     }
-    //     return res;
-    // }
+    public ArrayList<Case> CalculerCoupRoi(String casedep) {
+        ArrayList<Case> res = new ArrayList<Case>();
+        int colonne = (int)casedep.toLowerCase().charAt(0) -  97 ;
+        int ligne = 8 - Character.getNumericValue(casedep.charAt(1));
+        boolean estblanc = this.echiquier[ligne][colonne].getPiece().GetIsWhite();
+        int i = 0;
+        int j = 0;
+        int[][] listedecalages = {{-1,-1},{-1,0},{-1,1},{0,1},{1,1},{1,0},{1,-1},{0,-1}};
+        for(int ind = 0 ; ind < 8; ind++){
+            i = ligne + listedecalages[ind][0];
+            j = colonne + listedecalages[ind][1];
+            if( 0<= i && i < 8 && 0<= j && j < 8){
+                if(this.echiquier[i][j].getPiece() == null){
+                    res.add(this.echiquier[i][j]);
+                } else if(this.echiquier[i][j].getPiece().GetIsWhite() != estblanc){
+                    res.add(this.echiquier[i][j]);
+                }
+                
+            }
+        }
+        return res;
+    }
 
-    // public ArrayList<Case> CalculerCoupCavalier(String casedep) {
-    //     ArrayList<Case> res = new ArrayList<Case>();
-    //     int colonne = (int) casedep.toLowerCase().charAt(0) - 97;
-    //     int ligne = Character.getNumericValue(casedep.charAt(1));
-    //     int indexcasedep = 8 * (8 - ligne) + colonne;
-    //     boolean estblanc = this.echiquier[indexcasedep].GetIsCaseWhite();
-    //     // -6 -10 -15 -17 +6 +10 +15 +17 <--- valeurs à check
-    //     int[] listeindices = { -6, -10, -15, -17, 6, 10, 15, 17 };
-    //     for (int i : listeindices) {
-    //         int index = indexcasedep + i;
-    //         if (index >= 0 && index < 64) {
-    //             if (this.echiquier[index].GetIsCaseWhite() != estblanc) {
-    //                 res.add(this.echiquier[i]);
-    //             } else if (this.echiquier[index].GetValCase() == 0) {
-    //                 res.add(this.echiquier[i]);
-    //             }
-    //         }
-    //     }
-    //     return res;
-    // }
+    public ArrayList<Case> CalculerCoupCavalier(String casedep) {
+        ArrayList<Case> res = new ArrayList<Case>();
+        int colonne = (int)casedep.toLowerCase().charAt(0) -  97 ;
+        int ligne = 8 - Character.getNumericValue(casedep.charAt(1));
+        boolean estblanc = this.echiquier[ligne][colonne].getPiece().GetIsWhite();
+        int i = 0;
+        int j = 0;
+        int[][] listedecalages = {{-2,-1},{-2,1},{-1,2},{1,2},{2,1},{2,-1},{1,-2},{-1,-2}};
+        for(int ind = 0 ; ind < 8; ind++){
+            i = ligne + listedecalages[ind][0];
+            j = colonne + listedecalages[ind][1];
+            if( 0<= i && i < 8 && 0<= j && j < 8){
+                if(this.echiquier[i][j].getPiece() == null){
+                    res.add(this.echiquier[i][j]);
+                } else if(this.echiquier[i][j].getPiece().GetIsWhite() != estblanc){
+                    res.add(this.echiquier[i][j]);
+                }
+                
+            }
+        }
+        return res;
+    }
 
-    // public ArrayList<Case> CalculerCoupPion(String casedep) {
-    //     ArrayList<Case> res = new ArrayList<Case>();
-    //     int colonne = (int) casedep.toLowerCase().charAt(0) - 97;
-    //     int ligne = Character.getNumericValue(casedep.charAt(1));
-    //     boolean estblanc = this.echiquier[ligne][colonne].GetIsCaseWhite();
-    //     if (estblanc) {
-    //         if (this.echiquier[indexcasedep - 7].GetIsCaseWhite() != estblanc) {
-    //             res.add(this.echiquier[indexcasedep - 7]);
-    //         }
-    //         if (this.echiquier[indexcasedep - 9].GetIsCaseWhite() != estblanc) {
-    //             res.add(this.echiquier[indexcasedep - 9]);
-    //         }
-    //         if (this.echiquier[indexcasedep - 8].GetValCase() == 0) {
-    //             res.add(this.echiquier[indexcasedep - 8]);
-    //         }
-    //         if (ligne == 7) {
-    //             res.add(this.echiquier[indexcasedep - 16]);
-    //         }
-    //     } else {
-    //         if (this.echiquier[indexcasedep + 7].GetIsCaseWhite() != estblanc) {
-    //             res.add(this.echiquier[indexcasedep + 7]);
-    //         }
-    //         if (this.echiquier[indexcasedep + 9].GetIsCaseWhite() != estblanc) {
-    //             res.add(this.echiquier[indexcasedep + 9]);
-    //         }
-    //         if (this.echiquier[indexcasedep + 8].GetValCase() == 0) {
-    //             res.add(this.echiquier[indexcasedep + 8]);
-    //         }
-    //         if (ligne == 2) {
-    //             res.add(this.echiquier[indexcasedep + 16]);
-    //         }
-    //     }
-    //     return res;
-    // }
+    public ArrayList<Case> CalculerCoupPion(String casedep) {
+        ArrayList<Case> res = new ArrayList<Case>();
+        int colonne = (int)casedep.toLowerCase().charAt(0) -  97 ;
+        int ligne = 8 - Character.getNumericValue(casedep.charAt(1));
+        boolean estblanc = this.echiquier[ligne][colonne].getPiece().GetIsWhite();
+        int i = 0;
+        int j = 0;
+        int[][] listedecalages = {{-1,-1},{-1,0},{-2,0},{-1,1}};
+        if(!estblanc){
+            for (int x = 0; x < 4; x++) {
+                for (int y = 0; x < 2; x++) {
+                    listedecalages[x][y] = - listedecalages[x][y];
+                }
+            }
+        }
+        for(int ind = 0 ; ind < 8; ind++){
+            i = ligne + listedecalages[ind][0];
+            j = colonne + listedecalages[ind][1];
+            if( 0<= i && i < 8 && 0<= j && j < 8){
+                if(this.echiquier[i][j].getPiece() == null){
+                    res.add(this.echiquier[i][j]);
+                } else if(this.echiquier[i][j].getPiece().GetIsWhite() != estblanc){
+                    res.add(this.echiquier[i][j]);
+                }
+                
+            }
+        }
+        return res;
+    }
 
     // public boolean EstCoupValide(String coup) {
     //     // On verifiera si le coup entré correspont au bon camp dans la classe Game

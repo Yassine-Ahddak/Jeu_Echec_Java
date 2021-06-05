@@ -103,22 +103,37 @@ public class salut {
          * ligne)));
          */
 
-        Partie test1 = new Partie();
-        test1.restaurer();
+        // Partie test1 = new Partie();
+        // test1.restaurer();
         // test1.sauvegarde();
         // test1.getPartieEchiquier().Afficher();
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                if (test1.getEchiquier()[i][j].getPiece() != null) {
-                    System.out.print(test1.getEchiquier()[i][j].getPiece().GetidPiece() + " ");
-                } else {
-                    System.out.print(0 + " ");
-                }
-            }
-            System.out.println("");
-        }
+        // for (int i = 0; i < 8; i++) {
+        //     for (int j = 0; j < 8; j++) {
+        //         if (test1.getEchiquier()[i][j].getPiece() != null) {
+        //             System.out.print(test1.getEchiquier()[i][j].getPiece().GetidPiece() + " ");
+        //         } else {
+        //             System.out.print(0 + " ");
+        //         }
+        //     }
+        //     System.out.println("");
+        // }
         // System.out.print("\u001B[30mERROR \033[0m salut");
 
+        // int[][] listedecalages = {{-1,-1},{-1,0},{-2,0},{-1,1}};
+        //     for (int x = 0; x < 4; x++) {
+        //         for (int y = 0; y < 2; y++) {
+        //             listedecalages[x][y] = - listedecalages[x][y];
+        //         }
+        //     }
+        
+        //     for (int i = 0; i < 4; i++) {
+        //         for (int j = 0; j < 2; j++) {
+        //             System.out.println(listedecalages[i][j] + " ");
+        //     }
+        // }
+
+        Partie test =
+            
         // Dame dame = new Dame(false);
         // Case case1 = new Case(0,5,dame);
         // Case case2 = new Case(0,6);
@@ -143,7 +158,25 @@ public class salut {
         // boolean saluet = dame.GetIsWhite();
         // int toucouy = dame.GetidPiece();
         // System.out.println(" blanc ? : " + saluet + " ; id : " + toucouy);
-
+        // if(estblanc){
+        //     listedecalages[0][0]= -1;
+        //     listedecalages[0][1]= -1;
+        //     listedecalages[1][0] = -1;
+        //     listedecalages[1][1] = 0;
+        //     listedecalages[2][0] = -2;
+        //     listedecalages[2][1] = 0;
+        //     listedecalages[3][0] = -1;
+        //     listedecalages[3][1] = 1;
+        // }else{            
+        //     // listedecalages[0][0]= 1;
+        //     // listedecalages[0][1]= 1;
+        //     // listedecalages[1][0] = 1;
+        //     // listedecalages[1][1] = 0;
+        //     // listedecalages[2][0] = 2;
+        //     // listedecalages[2][1] = 0;
+        //     // listedecalages[3][0] = 1;
+        //     // listedecalages[3][1] = -1;;
+        // }
         // Case case1 = new Case(ligne, colonne, iscasewhite, valcase)
 
         // testechiquier.Afficher();
