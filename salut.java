@@ -107,11 +107,14 @@ public class salut {
         test1.restaurer();
         Echiquier echiquerqrfqeqesf = test1.getPartieEchiquier();
         test1.getPartieEchiquier().Afficher();
-        ArrayList<Case> listecoup = echiquerqrfqeqesf.CalculerCoupCavalier("g3");
+        echiquerqrfqeqesf.getEchiquier()[5][2].getPiece().setMoved(true);
+        ArrayList<Case> listecoup = echiquerqrfqeqesf.CalculerCoupRoi("c3");
         for(Case cases : listecoup){
             System.out.println(cases.toString() + "\n");
             
         }
+
+        System.out.println(echiquerqrfqeqesf.EstCoupValide("c3b5"));
         //test1.sauvegarde();
         // test1.getPartieEchiquier().Afficher();
         // for (int i = 0; i < 8; i++) {

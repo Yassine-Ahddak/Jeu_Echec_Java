@@ -36,6 +36,10 @@ public class Piece {
         return this.idPiece;
     }
 
+    public void setMoved(boolean moved){
+        this.moved = moved;
+    }
+
     public ArrayList<Case> GetListeCoups(){
         return this.listeCoups;
     }
