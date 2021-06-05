@@ -2,8 +2,11 @@ public class Pion extends Piece{
     private boolean estPromu;
 
     public Pion(boolean iswhite){
-        super((iswhite) ?1:7);
+        super((iswhite) ?1:7,false);
+    }
 
+    public Pion(boolean iswhite, boolean moved){
+        super((iswhite) ?1:7,moved);
     }
 
     public boolean EstCoupValide(String coup){

@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 public class Piece {
     private ArrayList<Case> listeCoups;
-    private boolean moved;  //en public pour y avoir accès dans les classes qui héritent de Piece
     private boolean isWhite;
     private int idPiece;
+    private boolean moved;
 
     public Piece(){
         this.idPiece = 0;
@@ -14,7 +14,19 @@ public class Piece {
     public Piece(int idPiece){
         this.idPiece= idPiece;
         this.isWhite= (idPiece < 7);
+        this.moved = false;
     }
+
+    public Piece(int idPiece, boolean moved){
+        this.idPiece= idPiece;
+        this.isWhite= (idPiece < 7);
+        this.moved = moved;
+    }
+
+    public boolean getMoved(){
+        return this.moved;
+    }
+
 
     public boolean GetIsWhite(){
         return this.isWhite;
