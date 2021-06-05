@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Partie extends Echiquier {
+public class Partie {
     private Echiquier echiquier;
 
     public Partie() {

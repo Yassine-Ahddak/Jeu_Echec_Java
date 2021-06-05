@@ -76,4 +76,11 @@ public class Case {
 
         return res;
     };
+
+    public String toString(){
+        if(piece != null){
+           return("Coo : " + this.coo +"; ligne : " + this.ligne +  "; colonne : " + this.colonne + this.piece.toString()); 
+        }
+        return("Coo : " + this.coo + " ; ligne : " + this.ligne +  "; colonne : " + this.colonne + "; Case vide");
+    }
 }

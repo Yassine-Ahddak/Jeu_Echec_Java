@@ -103,9 +103,16 @@ public class salut {
          * ligne)));
          */
 
-        // Partie test1 = new Partie();
-        // test1.restaurer();
-        // test1.sauvegarde();
+        Partie test1 = new Partie();
+        test1.restaurer();
+        Echiquier echiquerqrfqeqesf = test1.getPartieEchiquier();
+        test1.getPartieEchiquier().Afficher();
+        ArrayList<Case> listecoup = echiquerqrfqeqesf.CalculerCoupCavalier("g3");
+        for(Case cases : listecoup){
+            System.out.println(cases.toString() + "\n");
+            
+        }
+        //test1.sauvegarde();
         // test1.getPartieEchiquier().Afficher();
         // for (int i = 0; i < 8; i++) {
         //     for (int j = 0; j < 8; j++) {
@@ -132,7 +139,6 @@ public class salut {
         //     }
         // }
 
-        Partie test =
             
         // Dame dame = new Dame(false);
         // Case case1 = new Case(0,5,dame);

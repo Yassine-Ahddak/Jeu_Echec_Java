@@ -47,4 +47,8 @@ public class Piece {
     public void setisWhite(boolean iswhite){
         this.isWhite = iswhite;
     }
+
+    public String toString(){
+        return("; Id de la piece : " + this.idPiece + " ; isWhite : " + this.isWhite);
+    }
 }
