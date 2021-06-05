@@ -16,8 +16,6 @@ public class Dame extends Piece{
         int ligne2 = 8 - Character.getNumericValue(coup.charAt(3));
 
         return (colonne == colonne2 || ligne == ligne2) || (Math.abs(colonne2 - colonne)) == (Math.abs(ligne2 - ligne));
-
-        // A déterminer : comment faire en sorte que c'est bien dans la bonne diagonale
     };
 }
 

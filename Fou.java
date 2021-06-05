@@ -10,6 +10,6 @@ public class Fou extends Piece{
         int colonne2 = (int)coup.toLowerCase().charAt(2) - 97;
         int ligne2 = 8 - Character.getNumericValue(coup.charAt(3));
 
-        return ((Math.abs(colonne2 - colonne)) == (Math.abs(ligne2 - ligne)));
+        return ((Math.abs(colonne2 - colonne)) == (Math.abs(ligne2 - ligne))); 
     }
 }

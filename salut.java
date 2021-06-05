@@ -131,8 +131,6 @@ public class salut {
         //             System.out.println(listedecalages[i][j] + " ");
         //     }
         // }
-
-        Partie test =
             
         // Dame dame = new Dame(false);
         // Case case1 = new Case(0,5,dame);
@@ -182,6 +180,27 @@ public class salut {
         // testechiquier.Afficher();
         // testechiquier.SetEstALEndroit(false);
         // testechiquier.Afficher();
+        //String coup = "e6a3";
+        //Cavalier cav1 = new Cavalier(false);
+        // case1 = new Case(0,5,cav1);
+        //Case case2 = new Case(0,6);
+        //System.out.println(cav1.EstCoupValide(coup));   
+        
+        //String coup = "b6f5";
+        //Roi roi1 = new Roi(false);
+        // case1 = new Case(0,5,cav1);
+        //Case case2 = new Case(0,6);
+        //System.out.println(roi1.EstCoupValide(coup)); 
 
+
+
+
+        /*if(case2.getPiece() == null){
+            System.out.println("Salut");
+        }
+
+        if(case1.getPiece() != null){
+            System.out.println("Salut case 1 n'est pas vide");
+        }*/
     }
 }
