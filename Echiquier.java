@@ -53,31 +53,31 @@ public class Echiquier {
         System.out.print(nbligne + " ");
         while (i < 8 && i >= 0 && j < 8 && j >= 0) {
             while (j < 8 && j >= 0) {
-                if (echiquier[i][j].GetValCase() == 0) {
+                if (echiquier[i][j].getPiece() == null) {
                     System.out.print("| " + " " + " ");
-                } else if (echiquier[i][j].GetValCase() == 7) {
+                } else if (echiquier[i][j].getPiece().GetidPiece() == 7) {
                     System.out.print("| " + String.format(ANSI_BLACK + "%c" + ANSI_RESET, 0x2659) + " ");
-                } else if (echiquier[i][j].GetValCase() == 8) {
+                } else if (echiquier[i][j].getPiece().GetidPiece() == 8) {
                     System.out.print("| " + String.format(ANSI_BLACK + "%c" + ANSI_RESET, 0x2656) + " ");
-                } else if (echiquier[i][j].GetValCase() == 9) {
+                } else if (echiquier[i][j].getPiece().GetidPiece() == 9) {
                     System.out.print("| " + String.format(ANSI_BLACK + "%c" + ANSI_RESET, 0x2658) + " ");
-                } else if (echiquier[i][j].GetValCase() == 10) {
+                } else if (echiquier[i][j].getPiece().GetidPiece() == 10) {
                     System.out.print("| " + String.format(ANSI_BLACK + "%c" + ANSI_RESET, 0x2657) + " ");
-                } else if (echiquier[i][j].GetValCase() == 11) {
+                } else if (echiquier[i][j].getPiece().GetidPiece() == 11) {
                     System.out.print("| " + String.format(ANSI_BLACK + "%c" + ANSI_RESET, 0x2655) + " ");
-                } else if (echiquier[i][j].GetValCase() == 12) {
+                } else if (echiquier[i][j].getPiece().GetidPiece() == 12) {
                     System.out.print("| " + String.format(ANSI_BLACK + "%c" + ANSI_RESET, 0x2654) + " ");
-                } else if (echiquier[i][j].GetValCase() == 1) {
+                } else if (echiquier[i][j].getPiece().GetidPiece() == 1) {
                     System.out.print("| " + String.format(ANSI_WHITE + "%c" + ANSI_RESET, 0x265F) + " ");
-                } else if (echiquier[i][j].GetValCase() == 2) {
+                } else if (echiquier[i][j].getPiece().GetidPiece() == 2) {
                     System.out.print("| " + String.format(ANSI_WHITE + "%c" + ANSI_RESET, 0x265C) + " ");
-                } else if (echiquier[i][j].GetValCase() == 3) {
+                } else if (echiquier[i][j].getPiece().GetidPiece() == 3) {
                     System.out.print("| " + String.format(ANSI_WHITE + "%c" + ANSI_RESET, 0x265E) + " ");
-                } else if (echiquier[i][j].GetValCase() == 4) {
+                } else if (echiquier[i][j].getPiece().GetidPiece() == 4) {
                     System.out.print("| " + String.format(ANSI_WHITE + "%c" + ANSI_RESET, 0x265D) + " ");
-                } else if (echiquier[i][j].GetValCase() == 5) {
+                } else if (echiquier[i][j].getPiece().GetidPiece() == 5) {
                     System.out.print("| " + String.format(ANSI_WHITE + "%c" + ANSI_RESET, 0x265B) + " ");
-                } else if (echiquier[i][j].GetValCase() == 6) {
+                } else if (echiquier[i][j].getPiece().GetidPiece() == 6) {
                     System.out.print("| " + String.format(ANSI_WHITE + "%c" + ANSI_RESET, 0x265A) + " ");
                 }
                 j += pas;
@@ -118,24 +118,24 @@ public class Echiquier {
         int i = 0;
         int j = 0;
         while (j < 5) {
-            this.echiquier[i][j] = new Case(i, j, false, 8 + j);
+            this.echiquier[i][j] = new Case(i, j, (new Piece(8 + j)));
             j += 1;
         }
         while (j < 8) {
-            this.echiquier[i][j] = new Case(i, j, false, 10 - (j - 5));
+            this.echiquier[i][j] = new Case(i, j, (new Piece(10 - (j - 5))));
             j += 1;
         }
         i = 1;
         j = 0;
         while (j < 8) {
-            this.echiquier[i][j] = new Case(i, j, false, 7);
+            this.echiquier[i][j] = new Case(i, j, (new Piece(7)));
             j += 1;
         }
         i = 2;
         j = 0;
         while (i < 6) {
             while (j < 8) {
-                this.echiquier[i][j] = new Case(i, j, false, 0);
+                this.echiquier[i][j] = new Case(i, j);
                 j++;
             }
             j = 0;
@@ -144,17 +144,17 @@ public class Echiquier {
         i = 6;
         j = 0;
         while (j < 8) {
-            this.echiquier[i][j] = new Case(i, j, false, 1);
+            this.echiquier[i][j] = new Case(i, j, (new Piece(1)));
             j += 1;
         }
         i = 7;
         j = 0;
         while (j < 5) {
-            this.echiquier[i][j] = new Case(i, j, false, 2 + j);
+            this.echiquier[i][j] = new Case(i, j, (new Piece(2 + j)));
             j += 1;
         }
         while (j < 8) {
-            this.echiquier[i][j] = new Case(i, j, false, 4 - (j - 5));
+            this.echiquier[i][j] = new Case(i, j, (new Piece (4 - (j - 5))));
             j += 1;
         }
     }
@@ -162,8 +162,11 @@ public class Echiquier {
     public void init(int[][] echiquier){
         for(int i = 0; i < 8; i++){
             for(int j = 0; j < 8; j++){
-                boolean iswhite = (echiquier[i][j] < 7);
-                this.echiquier[i][j] = new Case(i, j ,iswhite,echiquier[i][j] );
+                if(echiquier[i][j] != 0){
+                    this.echiquier[i][j] = new Case(i, j , (new Piece (echiquier[i][j])) );
+                } else{
+                    this.echiquier[i][j] = new Case(i, j);
+                }
             }
         }
     }
@@ -171,8 +174,14 @@ public class Echiquier {
     public void AfficheString() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
+                if(this.echiquier[i][j].getPiece() != null){
                 System.out.println("Ligne : " + this.echiquier[i][j].GetLigne() + "; Colonne : " + this.echiquier[i][j].GetColonne() + " ; IsWhite : "
-                        + this.echiquier[i][j].GetIsCaseWhite() + " ; Valeur : " + this.echiquier[i][j].GetValCase());
+                        + this.echiquier[i][j].getPiece().GetIsWhite() + " ; Valeur : " + this.echiquier[i][j].getPiece().GetidPiece());
+                    }
+                else{
+                    System.out.println("Ligne : " + this.echiquier[i][j].GetLigne() + "; Colonne : " + this.echiquier[i][j].GetColonne() + " ; IsWhite : "
+                        + false + " ; Valeur : " + 0);
+                }
             }
         }
     }
@@ -185,10 +194,10 @@ public class Echiquier {
         int colonne = (int)casedep.toLowerCase().charAt(0) -  97 ;
         int ligne = 8 - Character.getNumericValue(casedep.charAt(1));
         int i = ligne + 1;
-        boolean estblanc = this.echiquier[ligne][colonne].GetIsCaseWhite();
+        boolean estblanc = this.echiquier[ligne][colonne].getPiece().GetIsWhite();
         while (i < 8) {
-            boolean iswhite = this.echiquier[i][colonne].GetIsCaseWhite();
-            if (this.echiquier[i][colonne].GetValCase() == 0) {
+            boolean iswhite = this.echiquier[i][colonne].getPiece().GetIsWhite();
+            if (this.echiquier[i][colonne].getPiece() == null) {
                 res.add(echiquier[i][colonne]);
             } else if (iswhite != estblanc) {
                 res.add(echiquier[i][colonne]);
@@ -200,8 +209,8 @@ public class Echiquier {
         }
         i = ligne - 1;
         while (i >= 0) {
-            boolean iswhite = this.echiquier[i][colonne].GetIsCaseWhite();
-            if (this.echiquier[i][colonne].GetValCase() == 0) {
+            boolean iswhite = this.echiquier[i][colonne].getPiece().GetIsWhite();
+            if (this.echiquier[i][colonne].getPiece() == null) {
                 res.add(echiquier[i][colonne]);
             } else if (iswhite != estblanc) {
                 res.add(echiquier[i][colonne]);
@@ -213,8 +222,8 @@ public class Echiquier {
         }
         i = colonne + 1;
         while (i < 8) {
-            boolean iswhite = this.echiquier[i][colonne].GetIsCaseWhite();
-            if (this.echiquier[ligne][i].GetValCase() == 0) {
+            boolean iswhite = this.echiquier[i][colonne].getPiece().GetIsWhite();
+            if (this.echiquier[ligne][i].getPiece() == null) {
                 res.add(echiquier[ligne][i]);
             } else if (iswhite != estblanc) {
                 res.add(echiquier[ligne][i]);
@@ -226,8 +235,8 @@ public class Echiquier {
         }
         i = colonne - 1;
         while (i >= 0) {
-            boolean iswhite = this.echiquier[i][colonne].GetIsCaseWhite();
-            if (this.echiquier[ligne][i].GetValCase() == 0) {
+            boolean iswhite = this.echiquier[i][colonne].getPiece().GetIsWhite();
+            if (this.echiquier[ligne][i].getPiece() == null) {
                 res.add(echiquier[ligne][i]);
             } else if (iswhite != estblanc) {
                 res.add(echiquier[ligne][i]);
@@ -246,11 +255,11 @@ public class Echiquier {
         int ligne = 8 - Character.getNumericValue(casedep.charAt(1));
         int i = ligne + 1;
         int j = colonne + 1;
-        boolean estblanc = this.echiquier[ligne][colonne].GetIsCaseWhite();
+        boolean estblanc = this.echiquier[ligne][colonne].getPiece().GetIsWhite();
         while (i < 8 && j < 8 && j >= 0 && i >=0) {
-            if (this.echiquier[i][j].GetValCase() == 0) {
+            if (this.echiquier[i][j].getPiece() == null) {
                 res.add(echiquier[i][j]);
-            } else if (this.echiquier[i][j].GetIsCaseWhite() != estblanc) {
+            } else if (this.echiquier[i][j].getPiece().GetIsWhite() != estblanc) {
                 res.add(echiquier[i][j]);
                 break;
             } else {
@@ -262,9 +271,9 @@ public class Echiquier {
         i = ligne - 1;
         j = colonne - 1;
         while (i < 8 && j < 8 && j >= 0 && i >=0) {
-            if (this.echiquier[i][j].GetValCase() == 0) {
+            if (this.echiquier[i][j].getPiece() == null) {
                 res.add(echiquier[i][j]);
-            } else if (this.echiquier[i][j].GetIsCaseWhite() != estblanc) {
+            } else if (this.echiquier[i][j].getPiece().GetIsWhite() != estblanc) {
                 res.add(echiquier[i][j]);
                 break;
             } else {
@@ -276,9 +285,9 @@ public class Echiquier {
         i = ligne + 1;
         j = colonne - 1;
         while (i < 8 && j < 8 && j >= 0 && i >=0) {
-            if (this.echiquier[i][j].GetValCase() == 0) {
+            if (this.echiquier[i][j].getPiece() == null) {
                 res.add(echiquier[i][j]);
-            } else if (this.echiquier[i][j].GetIsCaseWhite() != estblanc) {
+            } else if (this.echiquier[i][j].getPiece().GetIsWhite() != estblanc) {
                 res.add(echiquier[i][j]);
                 break;
             } else {
@@ -290,9 +299,9 @@ public class Echiquier {
         i = ligne - 1;
         i = colonne + 1;
         while (i < 8 && j < 8 && j >= 0 && i >=0) {
-            if (this.echiquier[i][j].GetValCase() == 0) {
+            if (this.echiquier[i][j].getPiece() == null) {
                 res.add(echiquier[i][j]);
-            } else if (this.echiquier[i][j].GetIsCaseWhite() != estblanc) {
+            } else if (this.echiquier[i][j].getPiece().GetIsWhite() != estblanc) {
                 res.add(echiquier[i][j]);
                 break;
             } else {

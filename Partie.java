@@ -6,105 +6,109 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Partie extends Echiquier{
+public class Partie extends Echiquier {
     private Echiquier echiquier;
 
-    public Partie(){
+    public Partie() {
         this.echiquier = new Echiquier();
     }
-    /*public void init(){
+    /*
+     * public void init(){
+     * 
+     * }
+     */
+    // objet échiquier
+    // fonction valider coups /deplacement
+    // verifier la couleur
+    // public main(){
 
-    }*/
-//objet échiquier 
-//fonction valider coups /deplacement
-//verifier la couleur
-    //public main(){
+    // }
 
-    //}
+    // public EstValide(){
 
-   // public EstValide(){
+    // }
 
-    //}
-
-    public Echiquier getPartieEchiquier(){
+    public Echiquier getPartieEchiquier() {
         return this.echiquier;
     }
-    
-    public void sauvegarde(){
-        File file = new File("C:\\Users\\yahdd\\Documents\\IUT\\Semestre 2\\projet\\prgm_jeu_echec\\Jeu_Echec_Java\\sauvegarde.txt");
-        //String testsauver = "test en cours";
-        if(!file.exists())
-        {
-            try{
+
+    public void sauvegarde() {
+        //File file = new File("C:\\Users\\yahdd\\Documents\\IUT\\Semestre 2\\projet\\prgm_jeu_echec\\Jeu_Echec_Java\\sauvegarde.txt");
+        File file = new File("C:\\Users\\tehre\\Desktop\\IUT\\gooboz\\Jeu_Echec_Java\\sauvegarde.txt");
+        // String testsauver = "test en cours";
+        if (!file.exists()) {
+            try {
                 file.createNewFile();
-                //testsauver = "marche";
-                //return true;
-            } catch (IOException e){
+                // testsauver = "marche";
+                // return true;
+            } catch (IOException e) {
                 e.printStackTrace();
-                //System.out.println(e);
-                //testsauver = "marche pas";
+                // System.out.println(e);
+                // testsauver = "marche pas";
             }
-        }
-        else{
-            try{
+        } else {
+            try {
                 FileWriter writer = new FileWriter(file);
                 BufferedWriter bw = new BufferedWriter(writer);
-                
-                /*for(int ligne1=0; ligne1 < echiquier1.length;ligne1++) {
-                    for(int colonne1=0; colonne1 < echiquier1.length;colonne1++) {
-                        if (echiquier1[ligne1][colonne1].GetValCase() != -1){
-                            
+
+                /*
+                 * for(int ligne1=0; ligne1 < echiquier1.length;ligne1++) { for(int colonne1=0;
+                 * colonne1 < echiquier1.length;colonne1++) { if
+                 * (echiquier1[ligne1][colonne1].GetValCase() != -1){
+                 * 
+                 * } } }
+                 */
+                for (int i = 0; i < 8; i++) {
+                    for (int j = 0; j < 8; j++) {
+                        // bw.write("salut");
+                        if (this.echiquier.getEchiquier()[i][j].getPiece() != null) {
+                            bw.write(this.echiquier.getEchiquier()[i][j].getPiece().GetidPiece() + " ");
+                        } else {
+                            bw.write(0 + " ");
                         }
-                    }
-                }*/
-                for(int i = 0; i < 8; i++){
-                    for(int j = 0; j < 8; j++){
-                        //bw.write("salut");
-                        bw.write(this.echiquier.getEchiquier()[i][j].GetValCase() + " ");
                     }
                     bw.write("\n");
                 }
                 bw.close();
                 writer.close();
-            } catch(IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        //return false;
+        // return false;
     }
 
-    public void restaurer(){
-        //File file = new File("C:\\Users\\yahdd\\Documents\\IUT\\Semestre 2\\projet\\prgm_jeu_echec\\Jeu_Echec_Java\\sauvegarde.txt");
+    public void restaurer() {
+        // File file = new File("C:\\Users\\yahdd\\Documents\\IUT\\Semestre
+        // 2\\projet\\prgm_jeu_echec\\Jeu_Echec_Java\\sauvegarde.txt");
         File file = new File("C:\\Users\\tehre\\Desktop\\IUT\\gooboz\\Jeu_Echec_Java\\sauvegarde.txt");
-        if(!file.exists())
-        {
+        if (!file.exists()) {
             System.out.println("Chargement impossible : fichier inexistant");
-        }
-        else{
-            try{
+        } else {
+            try {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
                 String line = reader.readLine();
                 int[][] res = new int[8][8];
                 int lignetab = 0;
-                while(line != null)
-                {
-                    //System.out.println(line);
+                while (line != null) {
+                    // System.out.println(line);
                     int colonnetab = 0;
                     int indexstring = 0;
-                    while (indexstring < line.length()){
+                    while (indexstring < line.length()) {
                         String elementtableau = "";
-                        while( indexstring < line.length() && line.charAt(indexstring) != (char)32){
+                        while (indexstring < line.length() && line.charAt(indexstring) != (char) 32) {
                             elementtableau = elementtableau + Character.toString(line.charAt(indexstring));
-                            //System.out.println("J'ajoute l'element : " + Character.toString(line.charAt(indexstring)));
+                            // System.out.println("J'ajoute l'element : " +
+                            // Character.toString(line.charAt(indexstring)));
                             indexstring += 1;
                         }
-                        //System.out.println("Element tableau : " + elementtableau);
+                        // System.out.println("Element tableau : " + elementtableau);
                         res[lignetab][colonnetab] = Integer.parseInt(elementtableau);
                         elementtableau = "";
-                        if(indexstring < line.length()){
-                            indexstring +=1;
+                        if (indexstring < line.length()) {
+                            indexstring += 1;
                         }
-                        colonnetab +=1;
+                        colonnetab += 1;
                     }
                     lignetab += 1;
                     line = reader.readLine();
@@ -112,25 +116,24 @@ public class Partie extends Echiquier{
                 }
                 reader.close();
                 this.echiquier.init(res);
-            } catch(IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public static void main(String[] args){
-        
-        //int ligne1 = 0;
-        //int colonne1 = 0;
-        //parcourir chaque ligne de l'échiquier puis récup valeur + ajouter espace
-        /*for(int ligne1=0; ligne1 < echiquier1.length;ligne1++) {
-            for(int colonne1=0; colonne1 < echiquier1.length;colonne1++) {
-                if (echiquier1[ligne1][colonne1].GetValCase() != -1){
-                    echiquier1.sauvegarde();
-                }
+    public static void main(String[] args) {
 
-            }
-        }*/
-        
+        // int ligne1 = 0;
+        // int colonne1 = 0;
+        // parcourir chaque ligne de l'échiquier puis récup valeur + ajouter espace
+        /*
+         * for(int ligne1=0; ligne1 < echiquier1.length;ligne1++) { for(int colonne1=0;
+         * colonne1 < echiquier1.length;colonne1++) { if
+         * (echiquier1[ligne1][colonne1].GetValCase() != -1){ echiquier1.sauvegarde(); }
+         * 
+         * } }
+         */
+
     }
 }
