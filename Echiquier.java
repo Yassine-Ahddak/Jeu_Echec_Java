@@ -383,13 +383,18 @@ public class Echiquier {
         int ligne2 = casearr.GetLigne();
         int colonne2 = casearr.GetColonne();
 
+        Case[][] simulechiquier = this.echiquier;
+        Piece tmpPiece = casedep.getPiece();
+        casedep.setPiece(null);;
+        casearr.setPiece(tmpPiece);
+
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                if (this.echiquier[i][j].getPiece() != null) {
-                    if (this.echiquier[i][j].getPiece().GetIsWhite() != estblanc
-                            && (this.echiquier[i][j].getPiece().GetListeCoups() != null)) {
-                        if (this.echiquier[i][j].getPiece().GetListeCoups()
-                                .contains(this.echiquier[ligne2][colonne2])) {
+                if (simulechiquier[i][j].getPiece() != null) {
+                    if (simulechiquier[i][j].getPiece().GetIsWhite() != estblanc
+                            && (simulechiquier[i][j].getPiece().GetListeCoups() != null)) {
+                        if (simulechiquier[i][j].getPiece().GetListeCoups()
+                                .contains(simulechiquier[ligne2][colonne2])) {
                             return true;
                         }
                     }
