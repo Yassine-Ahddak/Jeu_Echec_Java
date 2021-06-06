@@ -103,8 +103,19 @@ public class salut {
          * ligne)));
          */
 
-        // Partie test1 = new Partie();
-        // test1.restaurer();
+        Partie test1 = new Partie();
+        test1.getPartieEchiquier().Afficher();;
+        try {
+            Thread.sleep(4000);
+            System.out.print("\033[H\033[2J");  
+            System.out.flush();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        test1.restaurer();
+        test1.getPartieEchiquier().Afficher();
         // test1.getPartieEchiquier().Afficher();
         // test1.getPartieEchiquier().ActuCoups();
         //e5 = 3,4
@@ -132,6 +143,18 @@ public class salut {
 
         // System.out.println(echiquerqrfqeqesf.EstCoupValide("c3b5"));
 
+        // for(int i = 0; i < 10;i++){
+        //     System.out.println("Salut");
+        // }
+
+        // try {
+        //     Thread.sleep(4000);
+        //     System.out.print("\033[H\033[2J");  
+        //     System.out.flush();
+        // } catch (InterruptedException e) {
+        //     // TODO Auto-generated catch block
+        //     e.printStackTrace();
+        // }
 
 
 

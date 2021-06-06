@@ -6,12 +6,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.security.PublicKey;
+import java.util.Scanner;
 
 public class Partie {
     private Echiquier echiquier;
     private boolean isTourBlanc;
     private Joueur JoueurBlanc;
     private Joueur JoueurNoir;
+    private String historiquecoups;
 
     public Partie() {
         this.echiquier = new Echiquier();
@@ -51,6 +53,10 @@ public class Partie {
                 valasciichar1 >= 49 && valasciichar1 <= 56 && 
                 valasciichar2 >= 97 && valasciichar2 <= 104 && 
                 valasciichar3 >= 49 && valasciichar3 <= 56) || coup.toLowerCase().equals("save") || coup.toLowerCase().equals("load"));
+    }
+
+    public void setTourBlanc(boolean isTourBlanc){
+        this.isTourBlanc = isTourBlanc;
     }
 
     public void ActuListePieceJoueur(){
@@ -119,10 +125,11 @@ public class Partie {
         // return false;
     }
 
-    public void restaurer() {
+    public void restaurer(String nomfichier) {
         // File file = new File("C:\\Users\\yahdd\\Documents\\IUT\\Semestre
         // 2\\projet\\prgm_jeu_echec\\Jeu_Echec_Java\\sauvegarde.txt");
-        File file = new File("C:\\Users\\tehre\\Desktop\\IUT\\gooboz\\Jeu_Echec_Java\\sauvegarde.txt");
+        // File file = new File("C:\\Users\\tehre\\Desktop\\IUT\\gooboz\\Jeu_Echec_Java\\sauvegarde.txt");
+        File file = new File("C:\\Users\\tehre\\Desktop\\IUT\\gooboz\\Jeu_Echec_Java\\Sauvegardes\\" + nomfichier);
         if (!file.exists()) {
             System.out.println("Chargement impossible : fichier inexistant");
         } else {
@@ -163,6 +170,11 @@ public class Partie {
         }
     }
 
+    public static void clearScreen() {  
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();  
+    }  
+
     public static void main(String[] args) {
 
         // int ligne1 = 0;
@@ -182,9 +194,62 @@ public class Partie {
         /////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////
 
+        Scanner scan = new Scanner(System.in);
+        clearScreen();
         System.out.println("Bienvenue dans ce simulateur de jeu d'echec, que souhaitez vous faire ? \n \n");
         System.out.println("1 : Créer une nouvelle partie");
-        System.out.println("2 : En charger une déjà existante");
+        System.out.println("2 : En charger une déjà existante\n");
+
+        String userinput = scan.nextLine();
+        while(!(userinput.equals("1") || (userinput.equals("2")))){
+            clearScreen();
+            System.out.println("Action incorrecte veuillez saisir 1 ou 2");
+            System.out.println("1 : Créer une nouvelle partie");
+            System.out.println("2 : En charger une déjà existante\n");
+            userinput = scan.nextLine();
+
+        }
+
+        System.out.println("gg sorti");
+
+        if(userinput.equals("2")){
+            clearScreen();
+            System.out.println("Veuillez saisir le nom du fichier (avec l'extension .txt)\n");
+            userinput = scan.nextLine();
+            File file = new File("C:\\Users\\tehre\\Desktop\\IUT\\gooboz\\Jeu_Echec_Java\\Sauvegardes\\" + userinput);
+            while(!file.exists()){
+                clearScreen();
+                System.out.println("Le fichier est introuvable");
+                System.out.println("Veuillez saisir le nom du fichier (avec l'extension .txt)\n");
+                userinput = scan.nextLine();
+                file = new File("C:\\Users\\tehre\\Desktop\\IUT\\gooboz\\Jeu_Echec_Java\\Sauvegardes\\" + userinput);
+            }
+
+            Partie partie = new Partie();
+            partie.restaurer(userinput);
+            System.out.println("La partie a été chargée avec succes");
+            System.out.println("Veuillez indiquer à qui était le tour de jouer");
+            System.out.println("1 : Blanc");
+            System.out.println("2 : Noir\n");
+            while(!(userinput.equals("1") || (userinput.equals("2")))){
+                clearScreen();
+                System.out.println("Action incorrecte veuillez saisir 1 ou 2");
+                System.out.println("Veuillez indiquer à qui était le tour de jouer");
+                System.out.println("1 : Blanc");
+                System.out.println("2 : Noir\n");
+                userinput = scan.nextLine();
+    
+            }
+            if(userinput.equals("1")){
+                partie.setTourBlanc(true);
+            } else{
+                partie.setTourBlanc(false);
+            }
+
+
+        }
+
+        
 
 
 
