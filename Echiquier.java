@@ -400,6 +400,45 @@ public class Echiquier {
         return false;
     }
 
+    public boolean EstEnEchecRoi(Case casedep) {
+        // int ligne = casedep.GetLigne();
+        // int colonne = casedep.GetColonne();
+        boolean estblanc = casedep.getPiece().GetIsWhite();
+
+        int ligne2 = casedep.GetLigne();
+        int colonne2 = casedep.GetColonne();
+
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (this.echiquier[i][j].getPiece() != null) {
+                    if (this.echiquier[i][j].getPiece().GetIsWhite() != estblanc
+                            && (this.echiquier[i][j].getPiece().GetListeCoups() != null)) {
+                        if (this.echiquier[i][j].getPiece().GetListeCoups()
+                                .contains(this.echiquier[ligne2][colonne2])) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public boolean EstEnEchecEtMat(Case casedep) {
+        // int ligne = casedep.GetLigne();
+        // int colonne = casedep.GetColonne();
+        if(casedep.getPiece() == null){
+            return false;
+        }
+        if(casedep.getPiece().GetListeCoups() == null){
+            return true;
+        }
+        return (EstEnEchecRoi(casedep)) && (casedep.getPiece().GetListeCoups().size() == 0);
+
+        
+    }
+
     public ArrayList<Case> CalculerCoupRoi(Case casedep) {
         ArrayList<Case> res = new ArrayList<Case>();
         // int colonne = (int) casedep.toLowerCase().charAt(0) - 97;
