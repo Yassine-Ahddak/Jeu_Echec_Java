@@ -129,7 +129,9 @@ public class Partie {
         // File file = new File("C:\\Users\\yahdd\\Documents\\IUT\\Semestre2\\projet\\prgm_jeu_echec\\Jeu_Echec_Java\\sauvegarde.txt");
         // File file = new File("C:\\Users\\tehre\\Desktop\\IUT\\gooboz\\Jeu_Echec_Java\\sauvegarde.txt");
         //File file = new File("C:\\Users\\tehre\\Desktop\\IUT\\gooboz\\Jeu_Echec_Java\\Sauvegardes\\" + nomfichier);
-        File file = new File("C:\\Users\\yahdd\\Documents\\IUT\\Semestre2\\projet\\prgm_jeu_echec\\Jeu_Echec_Java\\Sauvegardes\\" + nomfichier);
+        //File file = new File("C:\\Users\\yahdd\\Documents\\IUT\\Semestre2\\projet\\prgm_jeu_echec\\Jeu_Echec_Java\\Sauvegardes\\" + nomfichier);
+        File file = new File("C:\\Users\\yahdd\\Documents\\IUT\\Semestre 2\\projet\\prgm_jeu_echec\\Jeu_Echec_Java\\Sauvegardes\\" + nomfichier);
+        System.out.println("C:\\Users\\yahdd\\Documents\\IUT\\Semestre2\\projet\\prgm_jeu_echec\\Jeu_Echec_Java\\Sauvegardes\\" + nomfichier);
         if (!file.exists()) {
             System.out.println("Chargement impossible : fichier inexistant");
         } else {

@@ -104,11 +104,14 @@ public class salut {
          */
 
         Partie test1 = new Partie();
-        test1.getPartieEchiquier().Afficher();
         String sauv = "sauvegarde.txt";
         test1.restaurer(sauv);
-        casedep = ""
-        EstEnEchecEtMat(Case casedep)
+        test1.getPartieEchiquier().Afficher();
+        
+        
+        System.out.println(test1.getPartieEchiquier().EstEnEchecRoi(test1.getPartieEchiquier().getEchiquier()[3][4]));
+        System.out.println(test1.getPartieEchiquier().getEchiquier()[3][4].getPiece().AfficheListeCoups());
+        
         /*try {
             Thread.sleep(4000);
             System.out.print("\033[H\033[2J");  
