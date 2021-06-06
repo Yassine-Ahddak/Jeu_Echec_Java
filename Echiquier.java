@@ -391,7 +391,7 @@ public class Echiquier {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (simulechiquier[i][j].getPiece() != null) {
-                    if (simulechiquier[i][j].getPiece().GetIsWhite() != estblanc
+                    if (simulechiquier[i][j].getPiece() != null && simulechiquier[i][j].getPiece().GetIsWhite() != estblanc
                             && (simulechiquier[i][j].getPiece().GetListeCoups() != null)) {
                         if (simulechiquier[i][j].getPiece().GetListeCoups()
                                 .contains(simulechiquier[ligne2][colonne2])) {
