@@ -104,8 +104,12 @@ public class salut {
          */
 
         Partie test1 = new Partie();
-        test1.getPartieEchiquier().Afficher();;
-        try {
+        test1.getPartieEchiquier().Afficher();
+        String sauv = "sauvegarde.txt";
+        test1.restaurer(sauv);
+        casedep = ""
+        EstEnEchecEtMat(Case casedep)
+        /*try {
             Thread.sleep(4000);
             System.out.print("\033[H\033[2J");  
             System.out.flush();
@@ -115,7 +119,7 @@ public class salut {
         }
 
         test1.restaurer();
-        test1.getPartieEchiquier().Afficher();
+        test1.getPartieEchiquier().Afficher();*/
         // test1.getPartieEchiquier().Afficher();
         // test1.getPartieEchiquier().ActuCoups();
         //e5 = 3,4
