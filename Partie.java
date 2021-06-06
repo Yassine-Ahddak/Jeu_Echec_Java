@@ -126,10 +126,10 @@ public class Partie {
     }
 
     public void restaurer(String nomfichier) {
-        // File file = new File("C:\\Users\\yahdd\\Documents\\IUT\\Semestre
-        // 2\\projet\\prgm_jeu_echec\\Jeu_Echec_Java\\sauvegarde.txt");
+        // File file = new File("C:\\Users\\yahdd\\Documents\\IUT\\Semestre2\\projet\\prgm_jeu_echec\\Jeu_Echec_Java\\sauvegarde.txt");
         // File file = new File("C:\\Users\\tehre\\Desktop\\IUT\\gooboz\\Jeu_Echec_Java\\sauvegarde.txt");
-        File file = new File("C:\\Users\\tehre\\Desktop\\IUT\\gooboz\\Jeu_Echec_Java\\Sauvegardes\\" + nomfichier);
+        //File file = new File("C:\\Users\\tehre\\Desktop\\IUT\\gooboz\\Jeu_Echec_Java\\Sauvegardes\\" + nomfichier);
+        File file = new File("C:\\Users\\yahdd\\Documents\\IUT\\Semestre2\\projet\\prgm_jeu_echec\\Jeu_Echec_Java\\Sauvegardes\\" + nomfichier);
         if (!file.exists()) {
             System.out.println("Chargement impossible : fichier inexistant");
         } else {
@@ -210,43 +210,54 @@ public class Partie {
 
         }
 
-        System.out.println("gg sorti");
-
         if(userinput.equals("2")){
             clearScreen();
-            System.out.println("Veuillez saisir le nom du fichier (avec l'extension .txt)\n");
+            System.out.println("Veuillez saisir le nom du fichier (avec l'extension .txt).\n");
             userinput = scan.nextLine();
             File file = new File("C:\\Users\\tehre\\Desktop\\IUT\\gooboz\\Jeu_Echec_Java\\Sauvegardes\\" + userinput);
             while(!file.exists()){
                 clearScreen();
-                System.out.println("Le fichier est introuvable");
-                System.out.println("Veuillez saisir le nom du fichier (avec l'extension .txt)\n");
+                System.out.println("Le fichier est introuvable.");
+                System.out.println("Veuillez saisir le nom du fichier (avec l'extension .txt).\n");
                 userinput = scan.nextLine();
                 file = new File("C:\\Users\\tehre\\Desktop\\IUT\\gooboz\\Jeu_Echec_Java\\Sauvegardes\\" + userinput);
             }
 
             Partie partie = new Partie();
             partie.restaurer(userinput);
-            System.out.println("La partie a été chargée avec succes");
-            System.out.println("Veuillez indiquer à qui était le tour de jouer");
-            System.out.println("1 : Blanc");
-            System.out.println("2 : Noir\n");
+            System.out.println("La partie a été chargée avec succes.");
+            System.out.println("Veuillez indiquer à qui était le tour de jouer.");
+            System.out.println("1 : Blanc.");
+            System.out.println("2 : Noir.\n");
             while(!(userinput.equals("1") || (userinput.equals("2")))){
                 clearScreen();
-                System.out.println("Action incorrecte veuillez saisir 1 ou 2");
-                System.out.println("Veuillez indiquer à qui était le tour de jouer");
+                System.out.println("Action incorrecte veuillez saisir 1 ou 2.");
+                System.out.println("Veuillez indiquer à qui était le tour de jouer.");
                 System.out.println("1 : Blanc");
                 System.out.println("2 : Noir\n");
                 userinput = scan.nextLine();
     
             }
-            if(userinput.equals("1")){
-                partie.setTourBlanc(true);
-            } else{
+            if(userinput.equals("2")){
                 partie.setTourBlanc(false);
             }
+            
+            
 
+        }
+        else{
+            clearScreen();
+            System.out.println("Début d'une nouvelle partie !");
+            System.out.println("Vous pouvez à tout moment de la partie écrire save afin de sauvegarder la partie (Cela y mettra un terme).");
+            try {
+                Thread.sleep(4000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            clearScreen();
+            Partie partie = new Partie();
 
+            
         }
 
         
