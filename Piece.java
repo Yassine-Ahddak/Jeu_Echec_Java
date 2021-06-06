@@ -15,12 +15,15 @@ public class Piece {
         this.idPiece= idPiece;
         this.isWhite= (idPiece < 7);
         this.moved = false;
+        this.listeCoups = new ArrayList<Case>();
     }
 
     public Piece(int idPiece, boolean moved){
         this.idPiece= idPiece;
         this.isWhite= (idPiece < 7);
         this.moved = moved;
+        this.listeCoups = new ArrayList<Case>();
+        
     }
 
     public boolean getMoved(){

@@ -106,7 +106,9 @@ public class salut {
         // Partie test1 = new Partie();
         // test1.restaurer();
         // test1.getPartieEchiquier().Afficher();
+        // test1.getPartieEchiquier().ActuCoups();
         //e5 = 3,4
+
         // System.out.println(test1.getPartieEchiquier().getEchiquier()[3][4].getPiece().AfficheListeCoups());
         // System.out.println("\n");
         
@@ -114,7 +116,7 @@ public class salut {
         //Echiquier feso = test1.getPartieEchiquier();
         //e5e6
 
-        //System.out.println(test1.getPartieEchiquier().CoupMetEnEchec(test1.getPartieEchiquier().getEchiquier()[3][4], test1.getPartieEchiquier().getEchiquier()[4][5]));
+        //System.out.println(test1.getPartieEchiquier().CoupMetEnEchec(test1.getPartieEchiquier().getEchiquier()[3][4], test1.getPartieEchiquier().getEchiquier()[2][4]));
 
         //System.out.println((test1.EstCoupCorrectSyntax("c1h8")));
 

@@ -5,12 +5,19 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.security.PublicKey;
 
 public class Partie {
     private Echiquier echiquier;
+    private boolean isTourBlanc;
+    private Joueur JoueurBlanc;
+    private Joueur JoueurNoir;
 
     public Partie() {
         this.echiquier = new Echiquier();
+        this.isTourBlanc = true;
+        this.JoueurBlanc = new Joueur(true);
+        this.JoueurNoir = new Joueur(false);
     }
     /*
      * public void init(){
@@ -40,10 +47,30 @@ public class Partie {
         int valasciichar1 = (int)coup.toLowerCase().charAt(1);
         int valasciichar2 = (int)coup.toLowerCase().charAt(2);
         int valasciichar3 = (int)coup.toLowerCase().charAt(3);
-        return( valasciichar0 >= 97 && valasciichar0 <= 104 && 
+        return( (valasciichar0 >= 97 && valasciichar0 <= 104 && 
                 valasciichar1 >= 49 && valasciichar1 <= 56 && 
                 valasciichar2 >= 97 && valasciichar2 <= 104 && 
-                valasciichar3 >= 49 && valasciichar3 <= 56 );
+                valasciichar3 >= 49 && valasciichar3 <= 56) || coup.toLowerCase().equals("save") || coup.toLowerCase().equals("load"));
+    }
+
+    public void ActuListePieceJoueur(){
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (this.getPartieEchiquier().getEchiquier()[i][j].getPiece() != null) {
+                    if(this.getPartieEchiquier().getEchiquier()[i][j].getPiece().GetIsWhite() == JoueurBlanc.GetIsWhite()){
+                        JoueurBlanc.GetListePieces().add(this.getPartieEchiquier().getEchiquier()[i][j].getPiece());
+                    } else{
+                        JoueurNoir.GetListePieces().add(this.getPartieEchiquier().getEchiquier()[i][j].getPiece());
+                    }
+                }
+            }
+        }
+    }
+    public boolean EstBonCampChoisi(Case casedep){
+        if(casedep.getPiece() == null){
+            return false;
+        }
+        return(casedep.getPiece().GetIsWhite() == this.isTourBlanc);
     }
 
     public void sauvegarde() {
@@ -148,6 +175,20 @@ public class Partie {
          * 
          * } }
          */
+
+        /////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////
+        ///////////////////PROGRAMME PRINCIPAL///////////////////
+        /////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////
+
+        System.out.println("Bienvenue dans ce simulateur de jeu d'echec, que souhaitez vous faire ? \n \n");
+        System.out.println("1 : Créer une nouvelle partie");
+        System.out.println("2 : En charger une déjà existante");
+
+
+
+
 
     }
 }
