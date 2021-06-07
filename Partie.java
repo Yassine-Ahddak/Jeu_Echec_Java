@@ -321,6 +321,8 @@ public class Partie {
             System.out.println("Début d'une nouvelle partie !");
             System.out.println(
                     "Vous pouvez à tout moment de la partie écrire save afin de sauvegarder la partie (Cela y mettra un terme).");
+                    System.out.println(
+                    "Vous pouvez également changer le sens de l'echiquier avec la commande tourne et l'historique des coups avec historique");
             try {
                 Thread.sleep(4000);
             } catch (InterruptedException e) {
@@ -347,6 +349,28 @@ public class Partie {
                 System.out.println("Historique des coups :\n");
                 System.out.println(partie.getHistoriqueCoups());
                 System.out.println("\n \n");
+                partie.getPartieEchiquier().Afficher();
+                if (partie.isTourBlanc) {
+                    System.out.println("C'est au tour des blancs de jouer veuillez saisir votre coup\n");
+                } else {
+                    System.out.println("C'est au tour des noirs de jouer veuillez saisir votre coup\n");
+                }
+                userinput = scan.nextLine();
+            }
+            if (userinput.toLowerCase().equals("tourne")) {
+                clearScreen();
+                partie.getPartieEchiquier().SetEstALEndroit(!(partie.getPartieEchiquier().getEstALendroit()));
+                partie.getPartieEchiquier().Afficher();
+                if (partie.isTourBlanc) {
+                    System.out.println("C'est au tour des blancs de jouer veuillez saisir votre coup\n");
+                } else {
+                    System.out.println("C'est au tour des noirs de jouer veuillez saisir votre coup\n");
+                }
+                userinput = scan.nextLine();
+            }
+            if (userinput.toLowerCase().equals("tourne")) {
+                clearScreen();
+                partie.getPartieEchiquier().SetEstALEndroit(!(partie.getPartieEchiquier().getEstALendroit()));
                 partie.getPartieEchiquier().Afficher();
                 if (partie.isTourBlanc) {
                     System.out.println("C'est au tour des blancs de jouer veuillez saisir votre coup\n");
