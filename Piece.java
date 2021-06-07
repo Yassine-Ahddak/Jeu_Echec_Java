@@ -30,6 +30,9 @@ public class Piece {
         return this.moved;
     }
 
+    public boolean EstCoupValide(String coup){
+        return false;
+    }
 
     public boolean GetIsWhite(){
         return this.isWhite;

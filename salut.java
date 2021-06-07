@@ -107,10 +107,44 @@ public class salut {
         String sauv = "sauvegarde.txt";
         test1.restaurer(sauv);
         test1.getPartieEchiquier().Afficher();
+
+
+
+        // Echiquier stpmarche = new Echiquier();
+        // stpmarche.SetEchiquier(test1.getPartieEchiquier().CopieEchiquierCourant());
+
+
+        // stpmarche.getEchiquier()[5][6] = new Case(5, 6);
+        // stpmarche.Afficher();
+        // test1.getPartieEchiquier().Afficher();
+        // System.out.println(test1.getPartieEchiquier().ChercherRoi(true).toString());
+        System.out.println(test1.getPartieEchiquier().EstEnEchecRoi(true));
+        System.out.println(test1.getPartieEchiquier().CoupMetEnEchec(test1.getPartieEchiquier().getEchiquier()[3][4], test1.getPartieEchiquier().getEchiquier()[2][3], true));
+        
+        // System.out.println(test1.getPartieEchiquier().getEchiquier()[3][4].getPiece().AfficheListeCoups());
+        // System.out.println(test1.getPartieEchiquier().getEchiquier()[4][5].getPiece().AfficheListeCoups());
+        // System.out.println(test1.getPartieEchiquier().getEchiquier()[5][6].getPiece().AfficheListeCoups());
+        //System.out.println((test1.getPartieEchiquier().EstCoupValide(test1.getPartieEchiquier().getEchiquier()[3][4],test1.getPartieEchiquier().getEchiquier()[2][4])));
+        // Echiquier echiquier = test1.getPartieEchiquier();
+        // Piece tmpPiece = echiquier.getEchiquier()[0][0].getPiece();
+        // echiquier.getEchiquier()[0][0].setPiece(null);
+        // echiquier.getEchiquier()[0][1].setPiece(tmpPiece);
+
+        // test1.getPartieEchiquier().Afficher();
+        // System.out.println(tmpPiece.toString());
+        // if(echiquier.getEchiquier()[0][0].getPiece() == null){
+        //     System.out.println("crotter");
+        // }
         
         
-        System.out.println(test1.getPartieEchiquier().EstEnEchecRoi(test1.getPartieEchiquier().getEchiquier()[3][4]));
-        System.out.println(test1.getPartieEchiquier().getEchiquier()[3][4].getPiece().AfficheListeCoups());
+        // System.out.println(test1.getPartieEchiquier().EstEnEchecRoi(test1.getPartieEchiquier().getEchiquier()[3][4]));
+        // System.out.println(test1.getPartieEchiquier().getEchiquier()[3][4].getPiece().AfficheListeCoups());
+
+        // Echiquier sim = new Echiquier();
+
+        // sim.SetEchiquier(test1.getPartieEchiquier().getEchiquier().clone());
+        // System.out.println(sim.getEchiquier().equals(test1.getPartieEchiquier().getEchiquier()));
+        //System.out.println(sim);
         
         /*try {
             Thread.sleep(4000);

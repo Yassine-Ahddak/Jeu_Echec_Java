@@ -7,6 +7,7 @@ public class Joueur {
 
     public Joueur(boolean iswhite){
         this.isWhite = iswhite;
+        this.listepieces = new ArrayList<Piece>();
     }
     
     public boolean GetIsWhite(){
@@ -14,7 +15,7 @@ public class Joueur {
     }
 
     public ArrayList<Piece> GetListePieces(){
-        return this.GetListePieces();
+        return this.listepieces;
     }
 
 }
